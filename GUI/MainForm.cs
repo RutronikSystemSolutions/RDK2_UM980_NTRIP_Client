@@ -27,6 +27,8 @@ namespace UM980PositioningGUI
 
         private DataRecorder positionRecorder = new DataRecorder();
 
+        private bool firstValidPosition = true;
+
         public MainForm()
         {
             InitializeComponent();
@@ -63,6 +65,21 @@ namespace UM980PositioningGUI
 
                 if ((lat != 0) && (lon != 0))
                 {
+                    if (firstValidPosition == true)
+                    {
+                        firstValidPosition = false;
+                        mapControl.ZoomLevel = 10;
+
+                        // Define custom track style
+                        var style = new TrackStyle(new Pen(Color.Black) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash, Width = 3 });
+
+                        // Assign style to the track
+                        track = new Track(style);
+
+                        // Add track to the map
+                        mapControl.Tracks.Add(track);
+                    }
+
                     ntripClient.SetCoordinates(lat, lon);
 
                     // Recenter always
@@ -163,18 +180,7 @@ namespace UM980PositioningGUI
             //var marker = new Marker(point, style, "My position");
 
             //mapControl.Center = point;
-            mapControl.ZoomLevel = 10;
             //mapControl.FitToBounds = true;
-
-
-            // Define custom track style
-            var style = new TrackStyle(new Pen(Color.Black) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash, Width = 3 });
-
-            // Assign style to the track
-            track = new Track(style);
-
-            // Add track to the map
-            mapControl.Tracks.Add(track);
 
             //// Add marker to the map
             //mapControl.Markers.Add(marker);

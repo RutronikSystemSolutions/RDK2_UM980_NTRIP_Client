@@ -21,7 +21,7 @@ namespace UM980PositioningGUI
             for (int i = 0; i < data.Length; ++i) this.data[i] = data[i];
         }
 
-        public ushort GetType()
+        public ushort GetRTCMType()
         {
             if ((data == null) || (data.Length < 5)) throw new Exception("data is unvalid");
 

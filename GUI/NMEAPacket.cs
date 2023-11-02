@@ -42,7 +42,7 @@ namespace UM980PositioningGUI
         }
 
 
-        public void ExtractPosition(out double lon, out double lat,  out int quality, out int satCount)
+        public void ExtractPosition(out double lon, out double lat,  out int quality, out int satCount, out int correctionAge)
         {
             // $GNGGA,074511.00,4845.77729544,N,00758.32489181,E,1,19,0.6,125.7309,M,48.3746,M,,*79
             // Init
@@ -50,6 +50,7 @@ namespace UM980PositioningGUI
             lat = 0;
             quality = 0;
             satCount = 0;
+            correctionAge = 0;
 
             string[] segments = GetRawString().Split(',');
             if (segments.Length != 15) return;
@@ -87,6 +88,16 @@ namespace UM980PositioningGUI
             catch(Exception)
             {
                 satCount = 0;
+            }
+
+            string correctionAgeStr = segments[13];
+            try
+            {
+                correctionAge = Convert.ToInt32(correctionAgeStr);
+            }
+            catch (Exception)
+            {
+                correctionAge = 0;
             }
         }
     }

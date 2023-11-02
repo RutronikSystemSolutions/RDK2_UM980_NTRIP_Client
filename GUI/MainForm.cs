@@ -20,6 +20,12 @@ namespace UM980PositioningGUI
 
         private Marker currentPos = null;
 
+        // Initializing collection of points,
+        // filling points with data omitted
+        private List<GeoPoint> posPoints = new List<GeoPoint>();
+        private Track track = new Track(TrackStyle.Default);
+
+        private DataRecorder positionRecorder = new DataRecorder();
 
         public MainForm()
         {
@@ -39,8 +45,16 @@ namespace UM980PositioningGUI
 
             if (nmeaPacket.IsPositioningPacket())
             {
-                nmeaPacket.ExtractPosition(out double lon, out double lat, out int quality, out int satCount);
-                lastPacketLabel.Text = String.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3}", lon, lat, quality, satCount);
+                nmeaPacket.ExtractPosition(out double lon, out double lat, out int quality, out int satCount, out int correctionAge);
+
+                string toDisp = string.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3} Correction age: {4} sec.", lon, lat, quality, satCount, correctionAge);
+                lastPacketLabel.Text = toDisp;
+
+                if (positionRecorder.IsStarted())
+                {
+                    string toStore = string.Format("{0};{1};{2};{3};{4}", lon, lat, quality, satCount, correctionAge) + Environment.NewLine;
+                    positionRecorder.Store(ASCIIEncoding.ASCII.GetBytes(toStore));
+                }
 
                 latitudeTextBox.Text = lat.ToString();
                 longitudeTextBox.Text = lon.ToString();
@@ -55,9 +69,12 @@ namespace UM980PositioningGUI
                     var point = new GeoPoint((float)lon, (float)lat);
                     mapControl.Center = point;
 
+                    track.Add(point);
+                    if (track.Count > 100) track.RemoveAt(0);
+
                     if (currentPos == null)
                     {
-                        var style = new MarkerStyle(30, Brushes.Red, Pens.Black, Brushes.Black, SystemFonts.DefaultFont, StringFormat.GenericDefault);
+                        var style = new MarkerStyle(30, Brushes.Red, Pens.Red, Brushes.Black, SystemFonts.DefaultFont, StringFormat.GenericDefault);
 
                         // Create marker instance: specify location on the map, drawing style, and label
                         currentPos = new Marker(point, style, "Position");
@@ -112,6 +129,8 @@ namespace UM980PositioningGUI
 
         private void NtripClient_OnRTCMPacket(object sender, byte[] packet)
         {
+            // Console.WriteLine("Send packet:  " + packet.Length + " First : " + packet[0]);
+
             // RTCMPacket rtcmppacket = new RTCMPacket(packet);
             streamStatistics.push(packet);
             um980.PushData(packet);
@@ -146,6 +165,16 @@ namespace UM980PositioningGUI
             //mapControl.Center = point;
             mapControl.ZoomLevel = 10;
             //mapControl.FitToBounds = true;
+
+
+            // Define custom track style
+            var style = new TrackStyle(new Pen(Color.Black) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dash, Width = 3 });
+
+            // Assign style to the track
+            track = new Track(style);
+
+            // Add track to the map
+            mapControl.Tracks.Add(track);
 
             //// Add marker to the map
             //mapControl.Markers.Add(marker);
@@ -258,6 +287,12 @@ namespace UM980PositioningGUI
 
             // Start the client
             ntripClient.Start(addr, port);
+        }
+
+        private void storePositionToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StoreToFileForm form = new StoreToFileForm(positionRecorder);
+            form.ShowDialog();
         }
     }
 }

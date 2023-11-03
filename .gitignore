@@ -3,3 +3,17 @@ GUI/.vs/UM980PositioningGUI/v15/.suo
 GUI/.vs/UM980PositioningGUI/v16/.suo
 GUI/bin/Debug/
 GUI/obj/
+
+# ModusToolbox Configurator generated code
+BSP/GeneratedSource/
+
+# ModusToolbox build system output
+BSP/build/
+BSP/Debug/
+BSP/Release/
+BSP/*_build/
+
+# ModusToolbox library repos or information about library dependencies
+BSP/libs/
+
+mtb_shared/

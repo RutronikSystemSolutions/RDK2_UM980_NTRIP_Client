@@ -1,0 +1,607 @@
+Loading the ModusToolbox Technology Packs and Early Access Packs
+Finished loading the ModusToolbox Technology Packs and Early Access Packs (1 ms)
+Loading the tools information
+Finished loading the tools information (49 ms)
+Using the executable path for the tools directory.
+Loading the application in directory 'C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP'
+creating application information from 'get_app_info' data
+finished creating application information from 'get_app_info' data (17 ms)
+Finished loading the application data (531 ms total, 484 make)
+Loading asset repository references
+Finished loading the asset repository references (3 ms)
+Loading the manifest data
+Loading super manfiest files from all sources
+Processing manifest loc file 'C:/Users/jorda/.modustoolbox/manifest.loc'
+Found user super-manifest(s):
+  'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Downloading super manifest file 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Getting manifests from remote and/or local sources
+Processing system manifest 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Downloading super manifest file 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Finished loading super manifest files from all sources
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Starting to parse super manifest with URL 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Finished parsing super manifest with URL 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-ce-manifest/raw/main/rutronik-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-dependencies-manifest.xml'
+Finished download of file 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Starting to parse super manifest with URL 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Finished parsing super manifest with URL 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/cce-app-manifest/raw/v2.X/cce-app-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/CyberonEBU/cyberon-mtb-ce-manifest/raw/main/cyberon-mtb-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/golioth/mtb-golioth-ce-manifest/raw/main/mtb-golioth-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/memfault/mtb-memfault-ce-manifest/raw/main/mtb-memfault-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/sensiml/sensiml-ce-manifest/raw/main/sensiml-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/CyberonEBU/cyberon-mtb-mw-manifest/raw/main/cyberon-mtb-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/golioth/mtb-golioth-mw-manifest/raw/main/mtb-golioth-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/memfault/mtb-memfault-mw-manifest/raw/main/mtb-memfault-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/sensiml/sensiml-mw-manifest/raw/main/sensiml-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-ce-manifest/raw/main/rutronik-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/cce-app-manifest/raw/v2.X/cce-app-manifest-fv2.xml'
+Finished download of file 'https://github.com/CyberonEBU/cyberon-mtb-ce-manifest/raw/main/cyberon-mtb-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/golioth/mtb-golioth-ce-manifest/raw/main/mtb-golioth-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/memfault/mtb-memfault-ce-manifest/raw/main/mtb-memfault-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/sensiml/sensiml-ce-manifest/raw/main/sensiml-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/CyberonEBU/cyberon-mtb-mw-manifest/raw/main/cyberon-mtb-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/golioth/mtb-golioth-mw-manifest/raw/main/mtb-golioth-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/memfault/mtb-memfault-mw-manifest/raw/main/mtb-memfault-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/sensiml/sensiml-mw-manifest/raw/main/sensiml-mw-manifest-fv2.xml'
+Finished loading the manifest data (1807 ms)
+Loading the device db
+Finished loading the device db (64962 ms)
+Starting to refresh dependencies for project 'rdk2-usb-cdc-test'.
+Requested to remove the asset 'cat1cm0p'.
+Requested to remove the asset 'cmsis'.
+Requested to remove the asset 'core-lib'.
+Requested to remove the asset 'core-make'.
+Requested to remove the asset 'mtb-hal-cat1'.
+Requested to remove the asset 'mtb-pdl-cat1'.
+Requested to remove the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cat1cm0p'.
+Requested to add the asset 'core-lib'.
+Requested to add the asset 'core-make'.
+Requested to add the asset 'mtb-hal-cat1'.
+Requested to add the asset 'mtb-pdl-cat1'.
+Requested to add the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cmsis'.
+Found direct dependencies 'retarget-io, usbdev'.
+Found new indirect dependencies 'cat1cm0p, core-lib, core-make, mtb-hal-cat1, mtb-pdl-cat1, recipe-make-cat1a, cmsis'.
+Refreshed all dependencies for project 'rdk2-usb-cdc-test'.
+0 error(s), 0 warning(s)
+Successfully acquired the information.
+
+Loading the ModusToolbox Technology Packs and Early Access Packs
+Finished loading the ModusToolbox Technology Packs and Early Access Packs (1 ms)
+Loading the tools information
+Finished loading the tools information (49 ms)
+Using the executable path for the tools directory.
+
+Loading the application in directory 'C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP'
+creating application information from 'get_app_info' data
+finished creating application information from 'get_app_info' data (17 ms)
+Finished loading the application data (531 ms total, 484 make)
+Loading asset repository references
+Finished loading the asset repository references (3 ms)
+Loading the manifest data
+Loading super manfiest files from all sources
+Processing manifest loc file 'C:/Users/jorda/.modustoolbox/manifest.loc'
+Found user super-manifest(s):
+  'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Downloading super manifest file 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Getting manifests from remote and/or local sources
+Processing system manifest 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Downloading super manifest file 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Finished loading super manifest files from all sources
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Starting to parse super manifest with URL 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Finished parsing super manifest with URL 'https://github.com/RutronikSystemSolutions/rutronik-super-manifest/raw/main/rutronik-super-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-ce-manifest/raw/main/rutronik-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-dependencies-manifest.xml'
+Finished download of file 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Starting to parse super manifest with URL 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Finished parsing super manifest with URL 'https://modustoolbox.infineon.com/manifests/mtb-super-manifest/v2.X/mtb-super-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/cce-app-manifest/raw/v2.X/cce-app-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/CyberonEBU/cyberon-mtb-ce-manifest/raw/main/cyberon-mtb-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/golioth/mtb-golioth-ce-manifest/raw/main/mtb-golioth-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/memfault/mtb-memfault-ce-manifest/raw/main/mtb-memfault-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/sensiml/sensiml-ce-manifest/raw/main/sensiml-ce-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-dependencies-manifest.xml'
+Downloading manifest file 'https://github.com/CyberonEBU/cyberon-mtb-mw-manifest/raw/main/cyberon-mtb-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/golioth/mtb-golioth-mw-manifest/raw/main/mtb-golioth-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/memfault/mtb-memfault-mw-manifest/raw/main/mtb-memfault-mw-manifest-fv2.xml'
+Downloading manifest file 'https://github.com/sensiml/sensiml-mw-manifest/raw/main/sensiml-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-ce-manifest/raw/main/rutronik-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/RutronikSystemSolutions/rutronik-bsp-manifest/raw/main/rutronik-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-mw-manifest/raw/v2.X/mtb-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-ce-manifest/raw/v2.X/mtb-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-app-manifest/raw/v2.X/mtb-bt-app-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/cce-app-manifest/raw/v2.X/cce-app-manifest-fv2.xml'
+Finished download of file 'https://github.com/CyberonEBU/cyberon-mtb-ce-manifest/raw/main/cyberon-mtb-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/golioth/mtb-golioth-ce-manifest/raw/main/mtb-golioth-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/memfault/mtb-memfault-ce-manifest/raw/main/mtb-memfault-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/sensiml/sensiml-ce-manifest/raw/main/sensiml-ce-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bsp-manifest/raw/v2.X/mtb-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-bsp-manifest/raw/v2.X/mtb-bt-bsp-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-bt-mw-manifest/raw/v2.X/mtb-bt-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/Infineon/mtb-wifi-mw-manifest/raw/v2.X/mtb-wifi-mw-dependencies-manifest.xml'
+Finished download of file 'https://github.com/CyberonEBU/cyberon-mtb-mw-manifest/raw/main/cyberon-mtb-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/golioth/mtb-golioth-mw-manifest/raw/main/mtb-golioth-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/memfault/mtb-memfault-mw-manifest/raw/main/mtb-memfault-mw-manifest-fv2.xml'
+Finished download of file 'https://github.com/sensiml/sensiml-mw-manifest/raw/main/sensiml-mw-manifest-fv2.xml'
+Finished loading the manifest data (1807 ms)
+Loading the device db
+Finished loading the device db (64962 ms)
+Starting to refresh dependencies for project 'rdk2-usb-cdc-test'.
+Requested to remove the asset 'cat1cm0p'.
+Requested to remove the asset 'cmsis'.
+Requested to remove the asset 'core-lib'.
+Requested to remove the asset 'core-make'.
+Requested to remove the asset 'mtb-hal-cat1'.
+Requested to remove the asset 'mtb-pdl-cat1'.
+Requested to remove the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cat1cm0p'.
+Requested to add the asset 'core-lib'.
+Requested to add the asset 'core-make'.
+Requested to add the asset 'mtb-hal-cat1'.
+Requested to add the asset 'mtb-pdl-cat1'.
+Requested to add the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cmsis'.
+Found direct dependencies 'retarget-io, usbdev'.
+Found new indirect dependencies 'cat1cm0p, core-lib, core-make, mtb-hal-cat1, mtb-pdl-cat1, recipe-make-cat1a, cmsis'.
+Refreshed all dependencies for project 'rdk2-usb-cdc-test'.
+0 error(s), 0 warning(s)
+Successfully acquired the information.Updating application "BSP" ...
+Starting to commit changes to the filesystem and project 'rdk2-usb-cdc-test'.
+Requested asset 'retarget-io'.
+Requested asset 'usbdev'.
+Requested asset 'cat1cm0p'.
+Requested asset 'cmsis'.
+Requested asset 'core-lib'.
+Requested asset 'core-make'.
+Requested asset 'mtb-hal-cat1'.
+Requested asset 'mtb-pdl-cat1'.
+Requested asset 'recipe-make-cat1a'.
+Starting to fetch assets for the project directory 'C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP'.
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p fetch --all --tags --force --quiet
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io fetch --all --tags --force --quiet
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev fetch --all --tags --force --quiet
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a config remote.origin.fetch 'refs/heads/*:refs/heads/*'
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io fetch --all --tags --force --quiet
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p fetch --all --tags --force --quiet
+Starting: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a fetch --all --tags --force --quiet
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io release-v1.5.0
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p release-v1.2.0
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis release-v5.8.0
+Cloning into 'release-v1.5.0'...
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev release-v2.10.0
+Cloning into 'release-v1.2.0'...
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib release-v1.4.1
+Cloning into 'release-v5.8.0'...
+Cloning into 'release-v1.4.1'...
+Cloning into 'release-v2.10.0'...
+done.
+done.
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cmsis/cmsis release-v5.8.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make release-v3.2.2
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_usbdev/usbdev release-v2.10.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1 clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 release-v2.4.3
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io release-v1.5.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 checkout release-v5.8.0
+Cloning into 'release-v3.2.2'...
+Cloning into 'release-v2.4.3'...
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-lib/core-lib release-v1.4.1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 checkout release-v2.10.0
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_Infineon_cat1cm0p/cat1cm0p release-v1.2.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 checkout release-v1.5.0
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 checkout release-v1.4.1
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1 clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1 release-v2.4.3
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 checkout release-v1.2.0
+Success: git -C C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 fetch --all --tags --force --quiet
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a release-v2.1.1
+Cloning into 'release-v2.1.1'...
+Note: switching to 'release-v1.5.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at db7f962 Upload retarget-io [1515]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 checkout release-v1.5.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 checkout release-v2.4.3
+done.
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a release-v2.1.1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1 clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 release-v3.7.0
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_core-make/core-make release-v3.2.2
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote set-url cypress https://github.com/cypresssemiconductorco/retarget-io
+Cloning into 'release-v3.7.0'...
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote set-url cypress https://github.com/cypresssemiconductorco/retarget-io
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 checkout release-v2.1.1
+Note: switching to 'release-v1.2.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 68f0d3e Upload cat1cm0p 1.2.0.325 [1884]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 checkout release-v1.2.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 checkout release-v3.2.2
+Note: switching to 'release-v1.4.1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at a74be8b Upload core-lib [1796]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 checkout release-v1.4.1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/retarget-io
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/retarget-io
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote set-url cypress https://github.com/Infineon/cat1cm0p
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote set-url cypress https://github.com/Infineon/cat1cm0p
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote set-url cypress https://github.com/cypresssemiconductorco/core-lib
+Note: switching to 'release-v3.2.2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at b962a1e Upload core-make 3.2.2.4739 [1647]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote set-url cypress https://github.com/cypresssemiconductorco/core-lib
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 checkout release-v3.2.2
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote set-url --push cypress https://github.com/Infineon/cat1cm0p
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/retarget-io/release-v1.5.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_retarget-io/retarget-io
+Finished processing retarget-io
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote set-url --push cypress https://github.com/cypresssemiconductorco/core-lib
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote set-url --push cypress https://github.com/Infineon/cat1cm0p
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote set-url cypress https://github.com/cypresssemiconductorco/core-make
+Note: switching to 'release-v2.1.1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 9cbdee3 Upload recipe-make-cat1a 2.1.1.4648 [1380]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 checkout release-v2.1.1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_Infineon_cat1cm0p/cat1cm0p
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote set-url --push cypress https://github.com/cypresssemiconductorco/core-lib
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote set-url cypress https://github.com/cypresssemiconductorco/recipe-make-cat1a
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote set-url cypress https://github.com/cypresssemiconductorco/core-make
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_core-lib/core-lib
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cat1cm0p/release-v1.2.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_Infineon_cat1cm0p/cat1cm0p
+Finished processing cat1cm0p
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote set-url cypress https://github.com/cypresssemiconductorco/recipe-make-cat1a
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote set-url --push cypress https://github.com/cypresssemiconductorco/core-make
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote set-url --push cypress https://github.com/cypresssemiconductorco/recipe-make-cat1a
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-lib/release-v1.4.1 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_core-lib/core-lib
+Finished processing core-lib
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote set-url --push cypress https://github.com/cypresssemiconductorco/recipe-make-cat1a
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote set-url --push cypress https://github.com/cypresssemiconductorco/core-make
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_core-make/core-make
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/recipe-make-cat1a/release-v2.1.1 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_recipe-make-cat1a/recipe-make-cat1a
+Finished processing recipe-make-cat1a
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/core-make/release-v3.2.2 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_core-make/core-make
+Finished processing core-make
+Note: switching to 'release-v5.8.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at ce02f64 Upload cmsis 5.8.0.50
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 checkout release-v5.8.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote set-url cypress https://github.com/Infineon/cmsis
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote set-url cypress https://github.com/Infineon/cmsis
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote set-url --push cypress https://github.com/Infineon/cmsis
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote set-url --push cypress https://github.com/Infineon/cmsis
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_Infineon_cmsis/cmsis
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/cmsis/release-v5.8.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_Infineon_cmsis/cmsis
+Finished processing cmsis
+Note: switching to 'release-v2.10.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 7bdb68e Upload usbdev 2.10.0.292
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 checkout release-v2.10.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote set-url cypress https://github.com/cypresssemiconductorco/usbdev
+done.
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote set-url cypress https://github.com/cypresssemiconductorco/usbdev
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/usbdev
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1 clone --origin cypress --no-checkout C:/Users/jorda/.modustoolbox/git/cache/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1 release-v3.7.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 checkout release-v3.7.0
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/usbdev
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_usbdev/usbdev
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/usbdev/release-v2.10.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_usbdev/usbdev
+Finished processing usbdev
+Note: switching to 'release-v2.4.3'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 0373e75 Upload mtb-hal-cat1 [1864]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 checkout release-v2.4.3
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote set-url cypress https://github.com/cypresssemiconductorco/mtb-hal-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote set-url cypress https://github.com/cypresssemiconductorco/mtb-hal-cat1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote set-url --push cypress https://github.com/cypresssemiconductorco/mtb-hal-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote set-url --push cypress https://github.com/cypresssemiconductorco/mtb-hal-cat1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-hal-cat1/release-v2.4.3 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_mtb-hal-cat1/mtb-hal-cat1
+Finished processing mtb-hal-cat1
+Note: switching to 'release-v3.7.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 94eb787 Upload mtb-pdl-cat1 3.7.0.27344 [1864]
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 checkout release-v3.7.0
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote set-url cypress https://github.com/cypresssemiconductorco/mtb-pdl-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote set-url cypress https://github.com/cypresssemiconductorco/mtb-pdl-cat1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/mtb-pdl-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote set-url --push cypress https://github.com/cypresssemiconductorco/mtb-pdl-cat1
+Starting: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1
+Success: git -C C:/rutronik/github/RDK2_UM980_NTRIP_Client/mtb_shared/mtb-pdl-cat1/release-v3.7.0 remote add cypress-offline C:/Users/jorda/.modustoolbox/offline/git/https___github.com_cypresssemiconductorco_mtb-pdl-cat1/mtb-pdl-cat1
+Finished processing mtb-pdl-cat1
+Fetched all assets for the project directory 'C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP'.
+Writing the file 'C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/libs/app.mk'.
+Successfully committed changes to the project 'rdk2-usb-cdc-test'.
+0 error(s), 0 warning(s)
+Successfully updated application "BSP"
+Updating Launch Configurations ...
+Calling "make eclipse" ...
+Tools Directory: C:/Users/jorda/ModusToolbox/tools_3.0
+Searching installed tools in progress...
+Searching installed tools complete
+Initializing build: rdk2-usb-cdc-test Custom APP_RDK2 GCC_ARM
+Prebuild operations complete
+Auto-discovery in progress...
+Auto-discovery complete
+Commencing build operations...
+Tools Directory: C:/Users/jorda/ModusToolbox/tools_3.0
+Constructing build rules...
+Build rules construction complete
+==============================================================================
+= Generating IDE files =
+==============================================================================
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Attach (JLink).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Attach (KitProg3_MiniProg4).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Debug (JLink).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Debug (KitProg3_MiniProg4).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Erase (JLink).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Erase (KitProg3_MiniProg4).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Program (JLink).launch
+Generated C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.mtbLaunchConfigs/RDK2_UM980_NTRIP_Client Program (KitProg3_MiniProg4).launch
+INFO: The C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.project already exist and will not be regenerated
+INFO: The C:/rutronik/github/RDK2_UM980_NTRIP_Client/BSP/.cproject already exist and will not be regenerated
+Instructions:
+1. Open Eclipse IDE for ModusToolbox
+2. Select 'Import Existing Application In-Place' from the QuickPanel
+3. Browse to the application root directory
+"make eclipse" succeeded
+
+Starting to refresh dependencies for project 'rdk2-usb-cdc-test'.
+Requested to remove the asset 'cat1cm0p'.
+Requested to remove the asset 'cmsis'.
+Requested to remove the asset 'core-lib'.
+Requested to remove the asset 'core-make'.
+Requested to remove the asset 'mtb-hal-cat1'.
+Requested to remove the asset 'mtb-pdl-cat1'.
+Requested to remove the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cat1cm0p'.
+Requested to add the asset 'core-lib'.
+Requested to add the asset 'core-make'.
+Requested to add the asset 'mtb-hal-cat1'.
+Requested to add the asset 'mtb-pdl-cat1'.
+Requested to add the asset 'recipe-make-cat1a'.
+Requested to add the asset 'cmsis'.
+Found direct dependencies 'retarget-io, usbdev'.
+Found new indirect dependencies 'cat1cm0p, core-lib, core-make, mtb-hal-cat1, mtb-pdl-cat1, recipe-make-cat1a, cmsis'.
+Refreshed all dependencies for project 'rdk2-usb-cdc-test'.

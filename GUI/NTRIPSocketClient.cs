@@ -39,6 +39,8 @@ namespace UM980PositioningGUI
 
         private string address;
         private int port;
+        private string login;
+        private string password;
 
         private double latitude = double.NaN;
         private double longitude = double.NaN;
@@ -118,10 +120,12 @@ namespace UM980PositioningGUI
         /// </summary>
         /// <param name="address"></param>
         /// <param name="port"></param>
-        public void Start(string address, int port)
+        public void Start(string address, int port, string login, string password)
         {
             this.address = address;
             this.port = port;
+            this.login = login;
+            this.password = password;
             CreateAndStartBackgroundWorker();
             ChangeConnectionState(ConnectionState.OpeningConnection);
         }
@@ -130,14 +134,26 @@ namespace UM980PositioningGUI
         /// Generate the get request enabling to get the correction data
         /// </summary>
         /// <returns></returns>
-        private string GenerateMountPointGetRequest(string mountPoint)
+        private string GenerateMountPointGetRequest(string mountPoint, string userName, string password)
         {
-            string retval = "GET /" + mountPoint + " HTTP /1.0" + "\r\n";
-            retval += "User-Agent: NTRIP RutronikNTRIPClient/20231025" + "\r\n";
+            string retval = "GET /" + mountPoint + " HTTP/1.0" + "\r\n";
+            retval += "User-Agent: NTRIP RutronikClient/20231025" + "\r\n";
             retval += "Accept: */*" + "\r\n" + "Connection: close" + "\r\n";
+            if ((userName != null) && (userName.Length > 0))
+            {
+                string auth = Base64Encode(userName + ":" + password);
+                retval += "Authorization: Basic " + auth + "\r\n";
+            }
             retval += "\r\n";
 
             return retval;
+        }
+
+        // To use for connection
+        private string Base64Encode(string text)
+        {
+            var textBytes = System.Text.Encoding.UTF8.GetBytes(text);
+            return System.Convert.ToBase64String(textBytes);
         }
 
         /// <summary>
@@ -145,13 +161,17 @@ namespace UM980PositioningGUI
         /// The source table contains the list of correction sender (with coordiates)
         /// </summary>
         /// <returns></returns>
-        private string GenerateSourceTableGetRequest()
+        private string GenerateSourceTableGetRequest(string userName, string password)
         {
-            string retval = "GET / HTTP /1.0" + "\r\n";
-            retval += "User-Agent: NTRIP RutronikNTRIPClient/20231025" + "\r\n";
+            string retval = "GET / HTTP/1.0" + "\r\n";
+            retval += "User-Agent: NTRIP RutronikClient/20231025" + "\r\n";
             retval += "Accept: */*" + "\r\n" + "Connection: close" + "\r\n";
+            if ((userName != null) && (userName.Length > 0))
+            {
+                string auth = Base64Encode(userName + ":" + password);
+                retval += "Authorization: Basic " + auth + "\r\n";
+            }
             retval += "\r\n";
-
             return retval;
         }
 
@@ -199,7 +219,7 @@ namespace UM980PositioningGUI
             }
 
             // Create and send get message
-            byte[] msg = Encoding.ASCII.GetBytes(GenerateSourceTableGetRequest());
+            byte[] msg = Encoding.ASCII.GetBytes(GenerateSourceTableGetRequest(login, password));
             try
             {
                 socket.Send(msg);
@@ -287,7 +307,7 @@ namespace UM980PositioningGUI
             }
 
             // Create and send get message
-            byte[] msg = Encoding.ASCII.GetBytes(GenerateMountPointGetRequest(station.name));
+            byte[] msg = Encoding.ASCII.GetBytes(GenerateMountPointGetRequest(station.name,login, password));
             try
             {
                 socket.Send(msg);

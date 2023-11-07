@@ -38,6 +38,8 @@ namespace UM980PositioningGUI
         {
             casterAddressTextBox.Text = Properties.Settings.Default.casterAddress;
             casterPortTextBox.Text = Properties.Settings.Default.casterPort;
+            loginTextBox.Text = Properties.Settings.Default.userName;
+            passwordTextBox.Text = Properties.Settings.Default.password;
         }
 
         private void Um980_OnNMEAPacket(object sender, byte[] packet)
@@ -289,10 +291,12 @@ namespace UM980PositioningGUI
             // Allright store the parameters
             Properties.Settings.Default.casterAddress = casterAddressTextBox.Text;
             Properties.Settings.Default.casterPort = casterPortTextBox.Text;
+            Properties.Settings.Default.userName = loginTextBox.Text;
+            Properties.Settings.Default.password = passwordTextBox.Text;
             Properties.Settings.Default.Save();
 
             // Start the client
-            ntripClient.Start(addr, port);
+            ntripClient.Start(addr, port, loginTextBox.Text, passwordTextBox.Text);
         }
 
         private void storePositionToFileToolStripMenuItem_Click(object sender, EventArgs e)

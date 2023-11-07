@@ -5,5 +5,5 @@ The software first initializes the UM980 as rover mode and then acts as a gatewa
 - It converts packets received by the UART (sent by the UM980) (NMEA packets - posiition) into packet that are sent to the computer over USB.
 
 <figure>
-    <img src="pictures/overview.PNG"  style="zoom:100%;" alt="Screenshot GUI">
+    <img src="pictures/overview.png"  style="zoom:100%;" alt="Screenshot GUI">
 </figure>

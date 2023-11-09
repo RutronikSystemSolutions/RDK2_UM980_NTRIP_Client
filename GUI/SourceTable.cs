@@ -28,7 +28,6 @@ namespace UM980PositioningGUI
 
         public static List<CorrectionStation> GetStations(string sourceTable)
         {
-            const int stationSegmentsCount = 19;
             List<CorrectionStation> retval = new List<CorrectionStation>();
 
             string[] lines = sourceTable.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
@@ -48,8 +47,12 @@ namespace UM980PositioningGUI
                 // [10]: -2.854;
                 // [11]: 0;0;NTRIP RTKBase Ublox_ZED-F9P 2.4.1 1.13;none;N;N;15200;CentipedeRTK
                 string[] segments = lines[i].Split(new char[] { ';' });
-                if (segments.Length != stationSegmentsCount) continue;
-                if (segments[0].Contains("STR") == false) continue;
+
+                if (segments.Length < 11)
+                    continue;
+                
+                if (segments[0].Contains("STR") == false) 
+                    continue;
 
                 double lat = double.Parse(segments[9], CultureInfo.InvariantCulture);
                 double lon = double.Parse(segments[10], CultureInfo.InvariantCulture);

@@ -53,9 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\LogBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LogBox.Designer.cs">
+      <DependentUpon>LogBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CorrectionStation.cs" />
     <Compile Include="DataRecorder.cs" />
     <Compile Include="GeoCoordinate.cs" />
+    <Compile Include="NTRIPCasterConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NTRIPCasterConfigurationForm.Designer.cs">
+      <DependentUpon>NTRIPCasterConfigurationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SourceTable.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -79,8 +91,14 @@
     <Compile Include="StreamStatistics.cs" />
     <Compile Include="UM980.cs" />
     <Compile Include="UM980Stream.cs" />
+    <EmbeddedResource Include="Controls\LogBox.resx">
+      <DependentUpon>LogBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NTRIPCasterConfigurationForm.resx">
+      <DependentUpon>NTRIPCasterConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

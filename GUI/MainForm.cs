@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UM980PositioningGUI
@@ -32,14 +28,6 @@ namespace UM980PositioningGUI
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void LoadParameters()
-        {
-            casterAddressTextBox.Text = Properties.Settings.Default.casterAddress;
-            casterPortTextBox.Text = Properties.Settings.Default.casterPort;
-            loginTextBox.Text = Properties.Settings.Default.userName;
-            passwordTextBox.Text = Properties.Settings.Default.password;
         }
 
         private void Um980_OnNMEAPacket(object sender, byte[] packet)
@@ -157,13 +145,11 @@ namespace UM980PositioningGUI
 
         private void NtripClient_OnError(object sender, string errorMsg)
         {
-            ntripClientLogLabel.Text = errorMsg + Environment.NewLine + ntripClientLogLabel.Text;
+            logBox.AddLog(errorMsg);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoadParameters();
-
             // If tile server supports file system caching, 
             // you should specify path to the cache folder.
             // Web-based tile servers strongly require file system caching
@@ -173,20 +159,6 @@ namespace UM980PositioningGUI
             // Use tiles from OpenTopoMap (https://opentopomap.org/)
             mapControl.TileServer = new OpenTopoMapServer();
 
-            //// Create marker's location point
-            //var point = new GeoPoint((float)7.97211678, (float)48.76291084);
-
-            //var style = new MarkerStyle(30, Brushes.Red, Pens.Blue, Brushes.Black, SystemFonts.DefaultFont, StringFormat.GenericDefault);
-
-            //// Create marker with custom style
-            //var marker = new Marker(point, style, "My position");
-
-            //mapControl.Center = point;
-            //mapControl.FitToBounds = true;
-
-            //// Add marker to the map
-            //mapControl.Markers.Add(marker);
-
             string[] serialPorts = SerialPort.GetPortNames();
             portsComboBox.DataSource = serialPorts;
 
@@ -195,7 +167,7 @@ namespace UM980PositioningGUI
             ntripClient.OnRTCMPacket += NtripClient_OnRTCMPacket;
             ntripClient.OnNewCorrectionStations += NtripClient_OnNewCorrectionStations;
             ntripClient.OnNewConnectionState += NtripClient_OnNewConnectionState;
-            ntripClient.OnNewNearestStation += NtripClient_OnNewNearestStation;
+            ntripClient.OnNewStationConnectionAttempt += NtripClient_OnNewStationConnectionAttempt;
 
             streamStatistics = new StreamStatistics();
             streamStatistics.OnNewStat += StreamStatistics_OnNewStat;
@@ -204,9 +176,9 @@ namespace UM980PositioningGUI
             um980.OnNMEAPacket += Um980_OnNMEAPacket;
         }
 
-        private void NtripClient_OnNewNearestStation(object sender, CorrectionStation station)
+        private void NtripClient_OnNewStationConnectionAttempt(object sender, CorrectionStation station)
         {
-            ntripClientLogLabel.Text = "Nearest station: " +station.name + Environment.NewLine + ntripClientLogLabel.Text;
+            logBox.AddLog("Connect to station: " + station.name);
 
             mapControl.Markers.Clear();
             List<CorrectionStation> stations = ntripClient.GetCorrectionStations();
@@ -227,19 +199,17 @@ namespace UM980PositioningGUI
 
         private void NtripClient_OnNewConnectionState(object sender, NTRIPSocketClient.ConnectionState state)
         {
-            ntripClientLogLabel.Text = state.ToString() + Environment.NewLine + ntripClientLogLabel.Text;
+            logBox.AddLog(state.ToString());
 
             if ((state == NTRIPSocketClient.ConnectionState.Iddle) || (state == NTRIPSocketClient.ConnectionState.Error))
             {
-                casterAddressTextBox.Enabled = true;
-                casterPortTextBox.Enabled = true;
-                ntripClientConnectButton.Enabled = true;
+                disconnectButton.Enabled = false;
+                configureNtripStreamButton.Enabled = true;
             }
             else
             {
-                casterAddressTextBox.Enabled = false;
-                casterPortTextBox.Enabled = false;
-                ntripClientConnectButton.Enabled = false;
+                disconnectButton.Enabled = true;
+                configureNtripStreamButton.Enabled = false;
             }
         }
 
@@ -262,47 +232,22 @@ namespace UM980PositioningGUI
             um980.SetPortName(portsComboBox.Items[portsComboBox.SelectedIndex].ToString());
         }
 
-        /// <summary>
-        /// User press the connect button (for the NTRIP caster)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ntripClientConnectButton_Click(object sender, EventArgs e)
-        {
-            string addr = casterAddressTextBox.Text;
-            if (addr.Length == 0)
-            {
-                MessageBox.Show("Address cannot be empty!");
-                return;
-            }
-
-            int port = 0;
-            try
-            {
-                port = Convert.ToInt32(casterPortTextBox.Text);
-                if (port < 0) throw new Exception("Invalid port");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Port is invalid: " + ex.Message);
-                return;
-            }
-
-            // Allright store the parameters
-            Properties.Settings.Default.casterAddress = casterAddressTextBox.Text;
-            Properties.Settings.Default.casterPort = casterPortTextBox.Text;
-            Properties.Settings.Default.userName = loginTextBox.Text;
-            Properties.Settings.Default.password = passwordTextBox.Text;
-            Properties.Settings.Default.Save();
-
-            // Start the client
-            ntripClient.Start(addr, port, loginTextBox.Text, passwordTextBox.Text);
-        }
-
         private void storePositionToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StoreToFileForm form = new StoreToFileForm(positionRecorder);
             form.ShowDialog();
+        }
+
+        private void configureNtripStreamButton_Click(object sender, EventArgs e)
+        {
+            NTRIPCasterConfigurationForm form = new NTRIPCasterConfigurationForm(ntripClient);
+            form.ShowDialog();
+        }
+
+        private void disconnectButton_Click(object sender, EventArgs e)
+        {
+            streamStatistics.clear();
+            ntripClient.Disconnect();
         }
     }
 }

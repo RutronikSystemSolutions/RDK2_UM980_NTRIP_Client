@@ -26,6 +26,16 @@ namespace UM980PositioningGUI
             return nearest;
         }
 
+        public static CorrectionStation GetByMountPointName(List<CorrectionStation> list, string mountPoint)
+        {
+            if ((list == null) || (list.Count == 0)) return null;
+            for(int i = 0; i  < list.Count; ++i)
+            {
+                if (list[i].name.Equals(mountPoint)) return list[i];
+            }
+            return null;
+        }
+
         public static List<CorrectionStation> GetStations(string sourceTable)
         {
             List<CorrectionStation> retval = new List<CorrectionStation>();
@@ -48,16 +58,28 @@ namespace UM980PositioningGUI
                 // [11]: 0;0;NTRIP RTKBase Ublox_ZED-F9P 2.4.1 1.13;none;N;N;15200;CentipedeRTK
                 string[] segments = lines[i].Split(new char[] { ';' });
 
-                if (segments.Length < 11)
+                if (segments.Length < 12)
                     continue;
                 
                 if (segments[0].Contains("STR") == false) 
                     continue;
 
-                double lat = double.Parse(segments[9], CultureInfo.InvariantCulture);
-                double lon = double.Parse(segments[10], CultureInfo.InvariantCulture);
+                double lat = 0;
+                double lon = 0;
+                int nmeaRequested = 0;
 
-                retval.Add(new CorrectionStation(segments[1], lat, lon));
+                try
+                {
+                    lat = double.Parse(segments[9], CultureInfo.InvariantCulture);
+                    lon = double.Parse(segments[10], CultureInfo.InvariantCulture);
+                    nmeaRequested = int.Parse(segments[11], CultureInfo.InvariantCulture);
+                }
+                catch(Exception)
+                {
+                    continue;
+                }
+
+                retval.Add(new CorrectionStation(segments[1], segments[2], segments[3], segments[6], segments[8], lat, lon, nmeaRequested));
             }
 
             return retval;

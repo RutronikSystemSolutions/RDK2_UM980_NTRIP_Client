@@ -45,21 +45,14 @@
             this.longitudeTextBox = new System.Windows.Forms.TextBox();
             this.longitudeLabel = new System.Windows.Forms.Label();
             this.ntripCasterConfigurationGroupBox = new System.Windows.Forms.GroupBox();
-            this.ntripClientConnectButton = new System.Windows.Forms.Button();
-            this.ntripClientLogLabel = new System.Windows.Forms.Label();
+            this.disconnectButton = new System.Windows.Forms.Button();
+            this.configureNtripStreamButton = new System.Windows.Forms.Button();
             this.receptionSpeedLabel = new System.Windows.Forms.Label();
             this.bytesReceivedLabel = new System.Windows.Forms.Label();
-            this.casterPortTextBox = new System.Windows.Forms.TextBox();
-            this.portLabel = new System.Windows.Forms.Label();
-            this.casterAddressTextBox = new System.Windows.Forms.TextBox();
-            this.addressLabel = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storePositionToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginTextBox = new System.Windows.Forms.TextBox();
-            this.loginLabel = new System.Windows.Forms.Label();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.passwordLabel = new System.Windows.Forms.Label();
+            this.logBox = new UM980PositioningGUI.Controls.LogBox();
             this.um980SerialPortConfigurationGroupBox.SuspendLayout();
             this.ntripCasterConfigurationGroupBox.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -248,18 +241,11 @@
             // ntripCasterConfigurationGroupBox
             // 
             this.ntripCasterConfigurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.passwordTextBox);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.passwordLabel);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.loginTextBox);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.loginLabel);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.ntripClientConnectButton);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.ntripClientLogLabel);
+            this.ntripCasterConfigurationGroupBox.Controls.Add(this.logBox);
+            this.ntripCasterConfigurationGroupBox.Controls.Add(this.disconnectButton);
+            this.ntripCasterConfigurationGroupBox.Controls.Add(this.configureNtripStreamButton);
             this.ntripCasterConfigurationGroupBox.Controls.Add(this.receptionSpeedLabel);
             this.ntripCasterConfigurationGroupBox.Controls.Add(this.bytesReceivedLabel);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.casterPortTextBox);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.portLabel);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.casterAddressTextBox);
-            this.ntripCasterConfigurationGroupBox.Controls.Add(this.addressLabel);
             this.ntripCasterConfigurationGroupBox.Location = new System.Drawing.Point(769, 32);
             this.ntripCasterConfigurationGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ntripCasterConfigurationGroupBox.Name = "ntripCasterConfigurationGroupBox";
@@ -269,26 +255,26 @@
             this.ntripCasterConfigurationGroupBox.TabStop = false;
             this.ntripCasterConfigurationGroupBox.Text = "NTRIP Caster - Connection configuration";
             // 
-            // ntripClientConnectButton
+            // disconnectButton
             // 
-            this.ntripClientConnectButton.Location = new System.Drawing.Point(391, 18);
-            this.ntripClientConnectButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ntripClientConnectButton.Name = "ntripClientConnectButton";
-            this.ntripClientConnectButton.Size = new System.Drawing.Size(100, 28);
-            this.ntripClientConnectButton.TabIndex = 7;
-            this.ntripClientConnectButton.Text = "Connect";
-            this.ntripClientConnectButton.UseVisualStyleBackColor = true;
-            this.ntripClientConnectButton.Click += new System.EventHandler(this.ntripClientConnectButton_Click);
+            this.disconnectButton.Enabled = false;
+            this.disconnectButton.Location = new System.Drawing.Point(188, 21);
+            this.disconnectButton.Name = "disconnectButton";
+            this.disconnectButton.Size = new System.Drawing.Size(160, 28);
+            this.disconnectButton.TabIndex = 13;
+            this.disconnectButton.Text = "Disconnect";
+            this.disconnectButton.UseVisualStyleBackColor = true;
+            this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
-            // ntripClientLogLabel
+            // configureNtripStreamButton
             // 
-            this.ntripClientLogLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ntripClientLogLabel.Location = new System.Drawing.Point(22, 77);
-            this.ntripClientLogLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ntripClientLogLabel.Name = "ntripClientLogLabel";
-            this.ntripClientLogLabel.Size = new System.Drawing.Size(469, 84);
-            this.ntripClientLogLabel.TabIndex = 6;
-            this.ntripClientLogLabel.Text = "---";
+            this.configureNtripStreamButton.Location = new System.Drawing.Point(22, 21);
+            this.configureNtripStreamButton.Name = "configureNtripStreamButton";
+            this.configureNtripStreamButton.Size = new System.Drawing.Size(160, 28);
+            this.configureNtripStreamButton.TabIndex = 12;
+            this.configureNtripStreamButton.Text = "Configure stream";
+            this.configureNtripStreamButton.UseVisualStyleBackColor = true;
+            this.configureNtripStreamButton.Click += new System.EventHandler(this.configureNtripStreamButton_Click);
             // 
             // receptionSpeedLabel
             // 
@@ -310,40 +296,6 @@
             this.bytesReceivedLabel.TabIndex = 4;
             this.bytesReceivedLabel.Text = "--- bytes received.";
             // 
-            // casterPortTextBox
-            // 
-            this.casterPortTextBox.Location = new System.Drawing.Point(311, 21);
-            this.casterPortTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.casterPortTextBox.Name = "casterPortTextBox";
-            this.casterPortTextBox.Size = new System.Drawing.Size(72, 22);
-            this.casterPortTextBox.TabIndex = 3;
-            // 
-            // portLabel
-            // 
-            this.portLabel.AutoSize = true;
-            this.portLabel.Location = new System.Drawing.Point(271, 25);
-            this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(38, 17);
-            this.portLabel.TabIndex = 2;
-            this.portLabel.Text = "Port:";
-            // 
-            // casterAddressTextBox
-            // 
-            this.casterAddressTextBox.Location = new System.Drawing.Point(83, 21);
-            this.casterAddressTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.casterAddressTextBox.Name = "casterAddressTextBox";
-            this.casterAddressTextBox.Size = new System.Drawing.Size(183, 22);
-            this.casterAddressTextBox.TabIndex = 1;
-            // 
-            // addressLabel
-            // 
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(19, 25);
-            this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(64, 17);
-            this.addressLabel.TabIndex = 0;
-            this.addressLabel.Text = "Address:";
-            // 
             // menuStrip
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -351,7 +303,6 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(1279, 28);
             this.menuStrip.TabIndex = 10;
             this.menuStrip.Text = "menuStrip1";
@@ -371,39 +322,17 @@
             this.storePositionToFileToolStripMenuItem.Text = "Store to file";
             this.storePositionToFileToolStripMenuItem.Click += new System.EventHandler(this.storePositionToFileToolStripMenuItem_Click);
             // 
-            // loginTextBox
+            // logBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(83, 49);
-            this.loginTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(124, 22);
-            this.loginTextBox.TabIndex = 9;
-            // 
-            // loginLabel
-            // 
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Location = new System.Drawing.Point(19, 53);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(47, 17);
-            this.loginLabel.TabIndex = 8;
-            this.loginLabel.Text = "Login:";
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Location = new System.Drawing.Point(288, 50);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(124, 22);
-            this.passwordTextBox.TabIndex = 11;
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(213, 54);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(73, 17);
-            this.passwordLabel.TabIndex = 10;
-            this.passwordLabel.Text = "Password:";
+            this.logBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logBox.Location = new System.Drawing.Point(22, 55);
+            this.logBox.MaxLineCount = 10;
+            this.logBox.Name = "logBox";
+            this.logBox.Size = new System.Drawing.Size(473, 107);
+            this.logBox.TabIndex = 14;
             // 
             // MainForm
             // 
@@ -418,6 +347,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UM980 - Positioning";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.um980SerialPortConfigurationGroupBox.ResumeLayout(false);
@@ -439,14 +369,8 @@
         private System.Windows.Forms.MapControl mapControl;
         private System.Windows.Forms.GroupBox um980SerialPortConfigurationGroupBox;
         private System.Windows.Forms.GroupBox ntripCasterConfigurationGroupBox;
-        private System.Windows.Forms.TextBox casterAddressTextBox;
-        private System.Windows.Forms.Label addressLabel;
-        private System.Windows.Forms.TextBox casterPortTextBox;
-        private System.Windows.Forms.Label portLabel;
         private System.Windows.Forms.Label bytesReceivedLabel;
         private System.Windows.Forms.Label receptionSpeedLabel;
-        private System.Windows.Forms.Label ntripClientLogLabel;
-        private System.Windows.Forms.Button ntripClientConnectButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox longitudeTextBox;
         private System.Windows.Forms.Label longitudeLabel;
@@ -460,10 +384,9 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem storePositionToFileToolStripMenuItem;
-        private System.Windows.Forms.TextBox loginTextBox;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Button configureNtripStreamButton;
+        private System.Windows.Forms.Button disconnectButton;
+        private Controls.LogBox logBox;
     }
 }
 

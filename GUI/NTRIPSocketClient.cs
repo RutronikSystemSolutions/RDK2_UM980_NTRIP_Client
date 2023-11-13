@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace UM980PositioningGUI
 {
-    class NTRIPSocketClient
+    public class NTRIPSocketClient
     {
         #region "Types"
 
@@ -21,6 +18,13 @@ namespace UM980PositioningGUI
             WaitingValidPosition,
             ReceivingCorrectionData,
             Error
+        }
+
+        public enum ConfigurationMode
+        {
+            Unknown,
+            ConnectToNearest,
+            ConnectToSelected
         }
 
         #endregion
@@ -51,6 +55,12 @@ namespace UM980PositioningGUI
 
         private object sync = new object();
 
+        private int actionRequested = ActionUndefined;
+
+        private ConfigurationMode configurationMode = ConfigurationMode.Unknown;
+        private string selectedMountPoint;
+
+
         #endregion
 
         #region "Constants"
@@ -59,7 +69,13 @@ namespace UM980PositioningGUI
         private const int MsgRTCMPacket = 2;
         private const int MsgStationList = 3;
         private const int MsgNewConnectionState = 4;
-        private const int MsgNearestStation = 5;
+        private const int MsgConnectToStation = 5;
+
+        private const int ActionUndefined = 0;
+        private const int ActionRequestSourceTable = 1;
+        private const int ActionRequestCorrectionValues = 2;
+
+        private const int SocketConnectTimeoutMs = 2500;
 
         #endregion
 
@@ -88,11 +104,11 @@ namespace UM980PositioningGUI
         /// </summary>
         public event OnNewCorrectionStationsEventHandler OnNewCorrectionStations;
 
-        public delegate void OnNewNearestStationEventHandler(object sender, CorrectionStation station);
+        public delegate void OnNewStationConnectionAttemptEventHandler(object sender, CorrectionStation station);
         /// <summary>
-        /// Event to signal a new nearest station
+        /// Event to signala connection attempt to a mount point
         /// </summary>
-        public event OnNewNearestStationEventHandler OnNewNearestStation;
+        public event OnNewStationConnectionAttemptEventHandler OnNewStationConnectionAttempt;
 
         #endregion
 
@@ -116,18 +132,48 @@ namespace UM980PositioningGUI
         }
 
         /// <summary>
-        /// Start the client
+        /// Request the source table
         /// </summary>
         /// <param name="address"></param>
         /// <param name="port"></param>
-        public void Start(string address, int port, string login, string password)
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        public void RequestSourceTable(string address, int port, string login, string password)
         {
             this.address = address;
             this.port = port;
             this.login = login;
             this.password = password;
+            actionRequested = ActionRequestSourceTable;
             CreateAndStartBackgroundWorker();
             ChangeConnectionState(ConnectionState.OpeningConnection);
+        }
+
+        /// <summary>
+        /// Request the correction values (first need to get the source table)
+        /// </summary>
+        /// <param name="configurationMode"></param>
+        /// <param name="selectedMountPoint"></param>
+        public void RequestCorrectionValues(ConfigurationMode configurationMode, string selectedMountPoint)
+        {
+            if ((stations == null) || (stations.Count == 0)) return;
+            this.selectedMountPoint = selectedMountPoint;
+            this.configurationMode = configurationMode;
+            actionRequested = ActionRequestCorrectionValues;
+            CreateAndStartBackgroundWorker();
+            ChangeConnectionState(ConnectionState.OpeningConnection);
+        }
+
+        /// <summary>
+        /// Stop the connection
+        /// </summary>
+        public void Disconnect()
+        {
+            if (worker != null)
+            {
+                worker.CancelAsync();
+                return;
+            }
         }
 
         /// <summary>
@@ -152,8 +198,8 @@ namespace UM980PositioningGUI
         // To use for connection
         private string Base64Encode(string text)
         {
-            var textBytes = System.Text.Encoding.UTF8.GetBytes(text);
-            return System.Convert.ToBase64String(textBytes);
+            var textBytes = Encoding.UTF8.GetBytes(text);
+            return Convert.ToBase64String(textBytes);
         }
 
         /// <summary>
@@ -209,8 +255,19 @@ namespace UM980PositioningGUI
                 socket = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.Tcp);
 
-                // Connect to Remote EndPoint
-                socket.Connect(this.address, this.port);
+                // Asynchronuous connection to detect timeout
+                IAsyncResult result = socket.BeginConnect(this.address, this.port, null, null);
+                result.AsyncWaitHandle.WaitOne(SocketConnectTimeoutMs, true);
+
+                if (socket.Connected)
+                {
+                    socket.EndConnect(result);
+                }
+                else
+                {
+                    socket.Close();
+                    throw new Exception("Timeout during connection");
+                }
             }
             catch(Exception ex)
             {
@@ -281,6 +338,9 @@ namespace UM980PositioningGUI
             // Extract the stations from the string
             stations = SourceTable.GetStations(sourceTableStr);
 
+            Console.WriteLine("Source Table:");
+            Console.WriteLine(sourceTableStr);
+
             return 0;
         }
 
@@ -340,7 +400,6 @@ namespace UM980PositioningGUI
                 }
 
                 // Receive the response from the remote device.
-                // TODO: add a try?
                 int bytesRec = socket.Receive(bytes);
                 if (bytesRec > 0)
                 {
@@ -355,9 +414,55 @@ namespace UM980PositioningGUI
                 System.Threading.Thread.Sleep(10);
             }
 
+            // needs to send position (because of virtual reference station?)
+            if (station.nmeaRequested != 0)
+            {
+                double latitude = 0;
+                double longitude = 0;
+                lock (sync)
+                {
+                    latitude = this.latitude;
+                    longitude = this.longitude;
+                }
+
+                // $GPGGA,084125,5400.0000,N,02300.0000,E,1,05,1.00,100.0,M,10.000,M,,*7c
+                string positionStr = NMEAPacket.GenerateNMEAGGAPacket(latitude, longitude);
+                Console.WriteLine("Send : " + positionStr);
+                msg = Encoding.ASCII.GetBytes(positionStr + "\r\n");
+                try
+                {
+                    socket.Send(msg);
+                }
+                catch (Exception ex)
+                {
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+
+                    worker.ReportProgress(MsgError, "Error while sending position packet: " + ex.Message);
+                    return -3;
+                }
+            }
+
+            worker.ReportProgress(MsgNewConnectionState, ConnectionState.ReceivingCorrectionData);
+
+
+            lastValidTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
             // OK message has been received, continuously receive the correction data now
             for (; ; )
             {
+                long timeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
+                long diff = timeStamp - lastValidTimestamp;
+                if ((diff < 0) || (diff > 5000))
+                {
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+
+                    worker.ReportProgress(MsgError, "Didn't receive correction data since 5 seconds. Close connection.");
+                    return -2;
+                }
+
                 if (worker.CancellationPending)
                 {
                     try
@@ -368,8 +473,6 @@ namespace UM980PositioningGUI
                     catch (Exception) { }
                     return 0;
                 }
-
-                // TODO: check if still inside the 30km area
 
                 int bytesRec = socket.Receive(bytes);
                 if (bytesRec > 0)
@@ -383,6 +486,7 @@ namespace UM980PositioningGUI
                         if (packet == null) break;
                         else
                         {
+                            lastValidTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                             worker.ReportProgress(MsgRTCMPacket, packet);
                         }
                     }
@@ -407,43 +511,59 @@ namespace UM980PositioningGUI
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = (BackgroundWorker)sender;
-
-            int retval = GetSourceTable(worker);
-            if (retval != 0)
+            if (actionRequested == ActionRequestSourceTable)
             {
-                worker.ReportProgress(MsgNewConnectionState, ConnectionState.Error);
-                return;
-            }
-
-            // Success - report the list of stations
-            worker.ReportProgress(MsgStationList);
-
-            worker.ReportProgress(MsgNewConnectionState, ConnectionState.WaitingValidPosition);
-            for(; ;)
-            {
-                double latitude = double.NaN;
-                double longitude = double.NaN;
-                lock(sync)
-                {
-                    latitude = this.latitude;
-                    longitude = this.longitude;
-                }
-
-                if (double.IsNaN(latitude) || double.IsNaN(longitude))
-                {
-                    System.Threading.Thread.Sleep(100);
-                    continue;
-                }
-
-                // Valid coordinate, check for the next station
-                CorrectionStation nearest = SourceTable.GetNearest(stations, latitude, longitude);
-                worker.ReportProgress(MsgNearestStation, nearest);
-
-                retval = GetCorrectionData(worker, nearest);
+                int retval = GetSourceTable(worker);
                 if (retval != 0)
                 {
                     worker.ReportProgress(MsgNewConnectionState, ConnectionState.Error);
                     return;
+                }
+
+                // Success - report the list of stations
+                worker.ReportProgress(MsgStationList);
+
+                return;
+            }
+
+            if (actionRequested == ActionRequestCorrectionValues)
+            {
+                worker.ReportProgress(MsgNewConnectionState, ConnectionState.WaitingValidPosition);
+                for (; ; )
+                {
+                    if (worker.CancellationPending) break;
+
+                    double latitude = double.NaN;
+                    double longitude = double.NaN;
+                    lock (sync)
+                    {
+                        latitude = this.latitude;
+                        longitude = this.longitude;
+                    }
+
+                    if (double.IsNaN(latitude) || double.IsNaN(longitude))
+                    {
+                        System.Threading.Thread.Sleep(100);
+                        continue;
+                    }
+
+                    CorrectionStation toConnectStation = null;
+                    if (configurationMode == ConfigurationMode.ConnectToNearest)
+                    {
+                        toConnectStation = SourceTable.GetNearest(stations, latitude, longitude);
+                    }
+                    else
+                    {
+                        toConnectStation = SourceTable.GetByMountPointName(stations, selectedMountPoint);
+                    }
+                    worker.ReportProgress(MsgConnectToStation, toConnectStation);
+
+                    int retval = GetCorrectionData(worker, toConnectStation);
+                    if (retval != 0)
+                    {
+                        worker.ReportProgress(MsgNewConnectionState, ConnectionState.Error);
+                        return;
+                    }
                 }
             }
         }
@@ -471,9 +591,9 @@ namespace UM980PositioningGUI
                     ChangeConnectionState(state);
                     break;
 
-                case MsgNearestStation:
+                case MsgConnectToStation:
                     CorrectionStation station = (CorrectionStation)e.UserState;
-                    OnNewNearestStation?.Invoke(this, station);
+                    OnNewStationConnectionAttempt?.Invoke(this, station);
                     break;
             }
         }
@@ -487,7 +607,6 @@ namespace UM980PositioningGUI
         {
             // Signal change state
             ChangeConnectionState(ConnectionState.Iddle);
-
             worker = null;
         }
 

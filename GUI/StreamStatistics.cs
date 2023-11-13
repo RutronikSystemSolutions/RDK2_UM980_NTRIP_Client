@@ -23,6 +23,14 @@ namespace UM980PositioningGUI
         private long lastTime = 0;
         private long lastSize = 0;
 
+        public void clear()
+        {
+            dataSize = 0;
+            lastSize = 0;
+
+            OnNewStat?.Invoke(this, dataSize, 0);
+        }
+
         public void push(byte[] packet)
         {
             long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();

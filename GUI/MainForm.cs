@@ -40,8 +40,6 @@ namespace UM980PositioningGUI
             {
                 GGAPacket ggaPacket = new GGAPacket(Encoding.ASCII.GetString(packet));
 
-                //nmeaPacket.ExtractPosition(out double lon, out double lat, out int quality, out int satCount, out int correctionAge);
-
                 string toDisp = string.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3} Correction age: {4} sec.", 
                     ggaPacket.GetLongitude(), 
                     ggaPacket.GetLatitude(), 
@@ -151,6 +149,8 @@ namespace UM980PositioningGUI
 
         private void NtripClient_OnRTCMPacket(object sender, byte[] packet)
         {
+            if (packet == null) return;
+            lastRTCMTypeLabel.Text = "Last type: " + RTCMPacket.GetRTCMType(packet).ToString();
             streamStatistics.push(packet);
             um980.PushData(packet);
         }

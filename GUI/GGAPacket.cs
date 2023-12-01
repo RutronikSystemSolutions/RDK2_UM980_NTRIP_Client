@@ -189,12 +189,21 @@ namespace UM980PositioningGUI
                 undulation = 0;
             }
 
+            // $GNGGA,104006.00,4845.77986177,N,00758.32408413,E,2,22,0.6,129.6143,M,48.3745,M,7.0,0000*54
+
             string correctionAgeStr = segments[13];
-            try
+            if (correctionAgeStr.Length >= 1)
             {
-                correction_age = Convert.ToInt32(correctionAgeStr);
+                try
+                {
+                    correction_age = (int) double.Parse(correctionAgeStr, CultureInfo.InvariantCulture);
+                }
+                catch (Exception)
+                {
+                    correction_age = 999;
+                }
             }
-            catch (Exception)
+            else
             {
                 correction_age = 999;
             }

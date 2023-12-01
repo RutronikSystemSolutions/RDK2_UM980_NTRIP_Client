@@ -27,5 +27,11 @@ namespace UM980PositioningGUI
 
             return (ushort)(((data[3]) << 4) | ((data[4] & 0xF0) >> 4));
         }
+
+        public static ushort GetRTCMType(byte [] data)
+        {
+            if ((data == null) || (data.Length < 5)) throw new Exception("data is unvalid");
+            return (ushort)(((data[3]) << 4) | ((data[4] & 0xF0) >> 4));
+        }
     }
 }

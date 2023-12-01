@@ -236,7 +236,7 @@ int main(void)
 	}
 	printf("Timer initialized.\r\n");
 
-	um980_app_init(um980_app_uart_readable_func, um980_app_uart_read_func, um980_app_uart_write_func, hal_timer_get_uticks);
+	um980_app_init_hal(um980_app_uart_readable_func, um980_app_uart_read_func, um980_app_uart_write_func, hal_timer_get_uticks);
 
 	um980_app_set_nmea_listener(um980_nmea_listener);
 

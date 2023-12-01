@@ -34,6 +34,7 @@
             this.lastPacketLabel = new System.Windows.Forms.Label();
             this.mapControl = new System.Windows.Forms.MapControl();
             this.um980SerialPortConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.disconnectUM980Button = new System.Windows.Forms.Button();
             this.satCountTextBox = new System.Windows.Forms.TextBox();
             this.satCountLabel = new System.Windows.Forms.Label();
             this.qualityTextBox = new System.Windows.Forms.TextBox();
@@ -45,6 +46,7 @@
             this.longitudeTextBox = new System.Windows.Forms.TextBox();
             this.longitudeLabel = new System.Windows.Forms.Label();
             this.ntripCasterConfigurationGroupBox = new System.Windows.Forms.GroupBox();
+            this.logBox = new UM980PositioningGUI.Controls.LogBox();
             this.disconnectButton = new System.Windows.Forms.Button();
             this.configureNtripStreamButton = new System.Windows.Forms.Button();
             this.receptionSpeedLabel = new System.Windows.Forms.Label();
@@ -52,7 +54,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storePositionToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logBox = new UM980PositioningGUI.Controls.LogBox();
+            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.centerOnPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.um980SerialPortConfigurationGroupBox.SuspendLayout();
             this.ntripCasterConfigurationGroupBox.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -60,10 +63,10 @@
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(243, 21);
-            this.connectButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.connectButton.Location = new System.Drawing.Point(182, 17);
+            this.connectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(75, 23);
+            this.connectButton.Size = new System.Drawing.Size(56, 19);
             this.connectButton.TabIndex = 4;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -72,10 +75,10 @@
             // portsComboBox
             // 
             this.portsComboBox.FormattingEnabled = true;
-            this.portsComboBox.Location = new System.Drawing.Point(5, 21);
-            this.portsComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.portsComboBox.Location = new System.Drawing.Point(4, 17);
+            this.portsComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.portsComboBox.Name = "portsComboBox";
-            this.portsComboBox.Size = new System.Drawing.Size(231, 24);
+            this.portsComboBox.Size = new System.Drawing.Size(174, 21);
             this.portsComboBox.TabIndex = 3;
             // 
             // lastPacketLabel
@@ -84,9 +87,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lastPacketLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lastPacketLabel.Location = new System.Drawing.Point(5, 48);
+            this.lastPacketLabel.Location = new System.Drawing.Point(4, 39);
+            this.lastPacketLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lastPacketLabel.Name = "lastPacketLabel";
-            this.lastPacketLabel.Size = new System.Drawing.Size(525, 127);
+            this.lastPacketLabel.Size = new System.Drawing.Size(394, 104);
             this.lastPacketLabel.TabIndex = 5;
             this.lastPacketLabel.Text = "---";
             // 
@@ -99,11 +103,11 @@
             this.mapControl.Cursor = System.Windows.Forms.Cursors.Cross;
             this.mapControl.ErrorColor = System.Drawing.Color.Red;
             this.mapControl.FitToBounds = true;
-            this.mapControl.Location = new System.Drawing.Point(12, 225);
-            this.mapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mapControl.Location = new System.Drawing.Point(9, 183);
+            this.mapControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mapControl.Name = "mapControl";
             this.mapControl.ShowThumbnails = true;
-            this.mapControl.Size = new System.Drawing.Size(1255, 548);
+            this.mapControl.Size = new System.Drawing.Size(941, 445);
             this.mapControl.TabIndex = 7;
             this.mapControl.Text = "mapControl";
             this.mapControl.ThumbnailBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -116,6 +120,7 @@
             // 
             this.um980SerialPortConfigurationGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.um980SerialPortConfigurationGroupBox.Controls.Add(this.disconnectUM980Button);
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.satCountTextBox);
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.satCountLabel);
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.qualityTextBox);
@@ -129,52 +134,66 @@
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.portsComboBox);
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.connectButton);
             this.um980SerialPortConfigurationGroupBox.Controls.Add(this.lastPacketLabel);
-            this.um980SerialPortConfigurationGroupBox.Location = new System.Drawing.Point(15, 32);
-            this.um980SerialPortConfigurationGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.um980SerialPortConfigurationGroupBox.Location = new System.Drawing.Point(11, 26);
+            this.um980SerialPortConfigurationGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.um980SerialPortConfigurationGroupBox.Name = "um980SerialPortConfigurationGroupBox";
-            this.um980SerialPortConfigurationGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.um980SerialPortConfigurationGroupBox.Size = new System.Drawing.Size(749, 189);
+            this.um980SerialPortConfigurationGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.um980SerialPortConfigurationGroupBox.Size = new System.Drawing.Size(562, 154);
             this.um980SerialPortConfigurationGroupBox.TabIndex = 8;
             this.um980SerialPortConfigurationGroupBox.TabStop = false;
             this.um980SerialPortConfigurationGroupBox.Text = "UM980 - Serial port configuration";
             // 
+            // disconnectUM980Button
+            // 
+            this.disconnectUM980Button.Enabled = false;
+            this.disconnectUM980Button.Location = new System.Drawing.Point(243, 17);
+            this.disconnectUM980Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.disconnectUM980Button.Name = "disconnectUM980Button";
+            this.disconnectUM980Button.Size = new System.Drawing.Size(78, 19);
+            this.disconnectUM980Button.TabIndex = 16;
+            this.disconnectUM980Button.Text = "Disconnect";
+            this.disconnectUM980Button.UseVisualStyleBackColor = true;
+            this.disconnectUM980Button.Click += new System.EventHandler(this.disconnectUM980Button_Click);
+            // 
             // satCountTextBox
             // 
             this.satCountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.satCountTextBox.Location = new System.Drawing.Point(621, 130);
-            this.satCountTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.satCountTextBox.Location = new System.Drawing.Point(466, 106);
+            this.satCountTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.satCountTextBox.Name = "satCountTextBox";
             this.satCountTextBox.ReadOnly = true;
-            this.satCountTextBox.Size = new System.Drawing.Size(100, 22);
+            this.satCountTextBox.Size = new System.Drawing.Size(76, 20);
             this.satCountTextBox.TabIndex = 15;
             // 
             // satCountLabel
             // 
             this.satCountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.satCountLabel.AutoSize = true;
-            this.satCountLabel.Location = new System.Drawing.Point(540, 134);
+            this.satCountLabel.Location = new System.Drawing.Point(405, 109);
+            this.satCountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.satCountLabel.Name = "satCountLabel";
-            this.satCountLabel.Size = new System.Drawing.Size(76, 17);
+            this.satCountLabel.Size = new System.Drawing.Size(59, 13);
             this.satCountLabel.TabIndex = 14;
             this.satCountLabel.Text = "Sat. count:";
             // 
             // qualityTextBox
             // 
             this.qualityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.qualityTextBox.Location = new System.Drawing.Point(621, 102);
-            this.qualityTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.qualityTextBox.Location = new System.Drawing.Point(466, 83);
+            this.qualityTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.qualityTextBox.Name = "qualityTextBox";
             this.qualityTextBox.ReadOnly = true;
-            this.qualityTextBox.Size = new System.Drawing.Size(100, 22);
+            this.qualityTextBox.Size = new System.Drawing.Size(76, 20);
             this.qualityTextBox.TabIndex = 13;
             // 
             // signalQualityLabel
             // 
             this.signalQualityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.signalQualityLabel.AutoSize = true;
-            this.signalQualityLabel.Location = new System.Drawing.Point(558, 105);
+            this.signalQualityLabel.Location = new System.Drawing.Point(418, 85);
+            this.signalQualityLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.signalQualityLabel.Name = "signalQualityLabel";
-            this.signalQualityLabel.Size = new System.Drawing.Size(56, 17);
+            this.signalQualityLabel.Size = new System.Drawing.Size(42, 13);
             this.signalQualityLabel.TabIndex = 12;
             this.signalQualityLabel.Text = "Quality:";
             // 
@@ -182,29 +201,31 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(726, 77);
+            this.label2.Location = new System.Drawing.Point(544, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 17);
+            this.label2.Size = new System.Drawing.Size(11, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "°";
             // 
             // latitudeTextBox
             // 
             this.latitudeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.latitudeTextBox.Location = new System.Drawing.Point(621, 74);
-            this.latitudeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.latitudeTextBox.Location = new System.Drawing.Point(466, 60);
+            this.latitudeTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.latitudeTextBox.Name = "latitudeTextBox";
             this.latitudeTextBox.ReadOnly = true;
-            this.latitudeTextBox.Size = new System.Drawing.Size(100, 22);
+            this.latitudeTextBox.Size = new System.Drawing.Size(76, 20);
             this.latitudeTextBox.TabIndex = 10;
             // 
             // latitudeLabel
             // 
             this.latitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.latitudeLabel.AutoSize = true;
-            this.latitudeLabel.Location = new System.Drawing.Point(552, 77);
+            this.latitudeLabel.Location = new System.Drawing.Point(414, 63);
+            this.latitudeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.latitudeLabel.Name = "latitudeLabel";
-            this.latitudeLabel.Size = new System.Drawing.Size(63, 17);
+            this.latitudeLabel.Size = new System.Drawing.Size(48, 13);
             this.latitudeLabel.TabIndex = 9;
             this.latitudeLabel.Text = "Latitude:";
             // 
@@ -212,29 +233,31 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(726, 49);
+            this.label1.Location = new System.Drawing.Point(544, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 17);
+            this.label1.Size = new System.Drawing.Size(11, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "°";
             // 
             // longitudeTextBox
             // 
             this.longitudeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.longitudeTextBox.Location = new System.Drawing.Point(621, 46);
-            this.longitudeTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.longitudeTextBox.Location = new System.Drawing.Point(466, 37);
+            this.longitudeTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.longitudeTextBox.Name = "longitudeTextBox";
             this.longitudeTextBox.ReadOnly = true;
-            this.longitudeTextBox.Size = new System.Drawing.Size(100, 22);
+            this.longitudeTextBox.Size = new System.Drawing.Size(76, 20);
             this.longitudeTextBox.TabIndex = 7;
             // 
             // longitudeLabel
             // 
             this.longitudeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.longitudeLabel.AutoSize = true;
-            this.longitudeLabel.Location = new System.Drawing.Point(540, 49);
+            this.longitudeLabel.Location = new System.Drawing.Point(405, 40);
+            this.longitudeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.longitudeLabel.Name = "longitudeLabel";
-            this.longitudeLabel.Size = new System.Drawing.Size(75, 17);
+            this.longitudeLabel.Size = new System.Drawing.Size(57, 13);
             this.longitudeLabel.TabIndex = 6;
             this.longitudeLabel.Text = "Longitude:";
             // 
@@ -246,21 +269,35 @@
             this.ntripCasterConfigurationGroupBox.Controls.Add(this.configureNtripStreamButton);
             this.ntripCasterConfigurationGroupBox.Controls.Add(this.receptionSpeedLabel);
             this.ntripCasterConfigurationGroupBox.Controls.Add(this.bytesReceivedLabel);
-            this.ntripCasterConfigurationGroupBox.Location = new System.Drawing.Point(769, 32);
-            this.ntripCasterConfigurationGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ntripCasterConfigurationGroupBox.Location = new System.Drawing.Point(577, 26);
+            this.ntripCasterConfigurationGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ntripCasterConfigurationGroupBox.Name = "ntripCasterConfigurationGroupBox";
-            this.ntripCasterConfigurationGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ntripCasterConfigurationGroupBox.Size = new System.Drawing.Size(501, 189);
+            this.ntripCasterConfigurationGroupBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ntripCasterConfigurationGroupBox.Size = new System.Drawing.Size(376, 154);
             this.ntripCasterConfigurationGroupBox.TabIndex = 9;
             this.ntripCasterConfigurationGroupBox.TabStop = false;
             this.ntripCasterConfigurationGroupBox.Text = "NTRIP Caster - Connection configuration";
             // 
+            // logBox
+            // 
+            this.logBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.logBox.Location = new System.Drawing.Point(16, 45);
+            this.logBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logBox.MaxLineCount = 10;
+            this.logBox.Name = "logBox";
+            this.logBox.Size = new System.Drawing.Size(355, 87);
+            this.logBox.TabIndex = 14;
+            // 
             // disconnectButton
             // 
             this.disconnectButton.Enabled = false;
-            this.disconnectButton.Location = new System.Drawing.Point(188, 21);
+            this.disconnectButton.Location = new System.Drawing.Point(141, 17);
+            this.disconnectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.disconnectButton.Name = "disconnectButton";
-            this.disconnectButton.Size = new System.Drawing.Size(160, 28);
+            this.disconnectButton.Size = new System.Drawing.Size(120, 23);
             this.disconnectButton.TabIndex = 13;
             this.disconnectButton.Text = "Disconnect";
             this.disconnectButton.UseVisualStyleBackColor = true;
@@ -268,9 +305,10 @@
             // 
             // configureNtripStreamButton
             // 
-            this.configureNtripStreamButton.Location = new System.Drawing.Point(22, 21);
+            this.configureNtripStreamButton.Location = new System.Drawing.Point(16, 17);
+            this.configureNtripStreamButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.configureNtripStreamButton.Name = "configureNtripStreamButton";
-            this.configureNtripStreamButton.Size = new System.Drawing.Size(160, 28);
+            this.configureNtripStreamButton.Size = new System.Drawing.Size(120, 23);
             this.configureNtripStreamButton.TabIndex = 12;
             this.configureNtripStreamButton.Text = "Configure stream";
             this.configureNtripStreamButton.UseVisualStyleBackColor = true;
@@ -280,9 +318,10 @@
             // 
             this.receptionSpeedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.receptionSpeedLabel.AutoSize = true;
-            this.receptionSpeedLabel.Location = new System.Drawing.Point(373, 165);
+            this.receptionSpeedLabel.Location = new System.Drawing.Point(280, 134);
+            this.receptionSpeedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.receptionSpeedLabel.Name = "receptionSpeedLabel";
-            this.receptionSpeedLabel.Size = new System.Drawing.Size(72, 17);
+            this.receptionSpeedLabel.Size = new System.Drawing.Size(54, 13);
             this.receptionSpeedLabel.TabIndex = 5;
             this.receptionSpeedLabel.Text = "--- bytes/s";
             // 
@@ -290,9 +329,10 @@
             // 
             this.bytesReceivedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bytesReceivedLabel.AutoSize = true;
-            this.bytesReceivedLabel.Location = new System.Drawing.Point(5, 165);
+            this.bytesReceivedLabel.Location = new System.Drawing.Point(4, 134);
+            this.bytesReceivedLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bytesReceivedLabel.Name = "bytesReceivedLabel";
-            this.bytesReceivedLabel.Size = new System.Drawing.Size(123, 17);
+            this.bytesReceivedLabel.Size = new System.Drawing.Size(91, 13);
             this.bytesReceivedLabel.TabIndex = 4;
             this.bytesReceivedLabel.Text = "--- bytes received.";
             // 
@@ -300,10 +340,12 @@
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.mapToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1279, 28);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(959, 24);
             this.menuStrip.TabIndex = 10;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -312,40 +354,46 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.storePositionToFileToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // storePositionToFileToolStripMenuItem
             // 
             this.storePositionToFileToolStripMenuItem.Name = "storePositionToFileToolStripMenuItem";
-            this.storePositionToFileToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.storePositionToFileToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.storePositionToFileToolStripMenuItem.Text = "Store to file";
             this.storePositionToFileToolStripMenuItem.Click += new System.EventHandler(this.storePositionToFileToolStripMenuItem_Click);
             // 
-            // logBox
+            // mapToolStripMenuItem
             // 
-            this.logBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.logBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.logBox.Location = new System.Drawing.Point(22, 55);
-            this.logBox.MaxLineCount = 10;
-            this.logBox.Name = "logBox";
-            this.logBox.Size = new System.Drawing.Size(473, 107);
-            this.logBox.TabIndex = 14;
+            this.mapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.centerOnPositionToolStripMenuItem});
+            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.mapToolStripMenuItem.Text = "Map";
+            // 
+            // centerOnPositionToolStripMenuItem
+            // 
+            this.centerOnPositionToolStripMenuItem.Checked = true;
+            this.centerOnPositionToolStripMenuItem.CheckOnClick = true;
+            this.centerOnPositionToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.centerOnPositionToolStripMenuItem.Name = "centerOnPositionToolStripMenuItem";
+            this.centerOnPositionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.centerOnPositionToolStripMenuItem.Text = "Center on position";
+            this.centerOnPositionToolStripMenuItem.Click += new System.EventHandler(this.centerOnPositionToolStripMenuItem_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 787);
+            this.ClientSize = new System.Drawing.Size(959, 639);
             this.Controls.Add(this.ntripCasterConfigurationGroupBox);
             this.Controls.Add(this.um980SerialPortConfigurationGroupBox);
             this.Controls.Add(this.mapControl);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UM980 - Positioning";
@@ -387,6 +435,9 @@
         private System.Windows.Forms.Button configureNtripStreamButton;
         private System.Windows.Forms.Button disconnectButton;
         private Controls.LogBox logBox;
+        private System.Windows.Forms.Button disconnectUM980Button;
+        private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem centerOnPositionToolStripMenuItem;
     }
 }
 

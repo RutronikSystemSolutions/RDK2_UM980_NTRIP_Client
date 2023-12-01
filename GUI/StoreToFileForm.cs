@@ -54,8 +54,8 @@ namespace UM980PositioningGUI
             if (sfd.ShowDialog() != DialogResult.OK) return;
 
             positionRecorder.Start(sfd.FileName);
-            string toStore = "longitude;latitude;quality;sat count;correction age" + Environment.NewLine;
-            positionRecorder.Store(ASCIIEncoding.ASCII.GetBytes(toStore));
+            string toStore = GGAPacket.GetCsvHeader();
+            positionRecorder.Store(Encoding.ASCII.GetBytes(toStore));
         }
 
         private void stopRecordingPositionButton_Click(object sender, EventArgs e)

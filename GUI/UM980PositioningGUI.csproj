@@ -62,6 +62,7 @@
     <Compile Include="CorrectionStation.cs" />
     <Compile Include="DataRecorder.cs" />
     <Compile Include="GeoCoordinate.cs" />
+    <Compile Include="GGAPacket.cs" />
     <Compile Include="NTRIPCasterConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>

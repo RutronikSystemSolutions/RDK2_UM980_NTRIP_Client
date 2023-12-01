@@ -22,7 +22,7 @@ static um980_app_uart_readable_func_t uart_readable_func = NULL;
 static um980_app_uart_read_func_t uart_read_func = NULL;
 static um980_app_uart_write_func_t uart_write_func = NULL;
 static um980_app_get_uticks get_uticks_func = NULL;
-static um980_app_on_nmea_packet nmea_listener = NULL;
+static um980_app_on_new_packet nmea_listener = NULL;
 
 #define PACKET_BUFFER_SIZE 512
 static uint8_t packet_buffer[PACKET_BUFFER_SIZE] = {0};
@@ -49,7 +49,7 @@ static void read_all()
 	}
 }
 
-void um980_app_init(um980_app_uart_readable_func_t uart_readable,
+void um980_app_init_hal(um980_app_uart_readable_func_t uart_readable,
 		um980_app_uart_read_func_t uart_read,
 		um980_app_uart_write_func_t uart_write,
 		um980_app_get_uticks get_uticks)
@@ -64,7 +64,7 @@ void um980_app_init(um980_app_uart_readable_func_t uart_readable,
 	read_all();
 }
 
-void um980_app_set_nmea_listener(um980_app_on_nmea_packet listener)
+void um980_app_set_nmea_listener(um980_app_on_new_packet listener)
 {
 	nmea_listener = listener;
 }

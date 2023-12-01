@@ -12,19 +12,19 @@
 
 #include "packet_handler.h"
 
-typedef void (*um980_app_on_nmea_packet)(uint8_t* buffer, uint16_t len);
+typedef void (*um980_app_on_new_packet)(uint8_t* buffer, uint16_t len);
 
 /**
  * @brief Initializes the module
  *
  * Store the HAL function and flush the RX receiving buffer
  */
-void um980_app_init(um980_app_uart_readable_func_t uart_readable,
+void um980_app_init_hal(um980_app_uart_readable_func_t uart_readable,
 		um980_app_uart_read_func_t uart_read,
 		um980_app_uart_write_func_t uart_write,
 		um980_app_get_uticks get_uticks);
 
-void um980_app_set_nmea_listener(um980_app_on_nmea_packet listener);
+void um980_app_set_nmea_listener(um980_app_on_new_packet listener);
 
 /**
  * @brief In case of error, call this function to cleanup the internal buffer

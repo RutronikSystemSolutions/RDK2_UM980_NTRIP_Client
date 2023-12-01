@@ -24,6 +24,7 @@ namespace UM980PositioningGUI
         private DataRecorder positionRecorder = new DataRecorder();
 
         private bool firstValidPosition = true;
+        private bool centerOnPosition = true;
 
         public MainForm()
         {
@@ -37,23 +38,30 @@ namespace UM980PositioningGUI
 
             if (nmeaPacket.IsPositioningPacket())
             {
-                nmeaPacket.ExtractPosition(out double lon, out double lat, out int quality, out int satCount, out int correctionAge);
+                GGAPacket ggaPacket = new GGAPacket(Encoding.ASCII.GetString(packet));
 
-                string toDisp = string.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3} Correction age: {4} sec.", lon, lat, quality, satCount, correctionAge);
+                //nmeaPacket.ExtractPosition(out double lon, out double lat, out int quality, out int satCount, out int correctionAge);
+
+                string toDisp = string.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3} Correction age: {4} sec.", 
+                    ggaPacket.GetLongitude(), 
+                    ggaPacket.GetLatitude(), 
+                    ggaPacket.quality, 
+                    ggaPacket.satellites_in_use, 
+                    ggaPacket.correction_age);
                 lastPacketLabel.Text = toDisp;
 
                 if (positionRecorder.IsStarted())
                 {
-                    string toStore = string.Format("{0};{1};{2};{3};{4}", lon, lat, quality, satCount, correctionAge) + Environment.NewLine;
+                    string toStore = ggaPacket.GetAsStringForCSV();
                     positionRecorder.Store(ASCIIEncoding.ASCII.GetBytes(toStore));
                 }
 
-                latitudeTextBox.Text = lat.ToString();
-                longitudeTextBox.Text = lon.ToString();
-                qualityTextBox.Text = quality.ToString();
-                satCountTextBox.Text = satCount.ToString();
+                latitudeTextBox.Text = ggaPacket.GetLatitude().ToString();
+                longitudeTextBox.Text = ggaPacket.GetLongitude().ToString();
+                qualityTextBox.Text = ggaPacket.quality.ToString();
+                satCountTextBox.Text = ggaPacket.satellites_in_use.ToString();
 
-                if ((lat != 0) && (lon != 0))
+                if ((ggaPacket.GetLatitude() != 0) && (ggaPacket.GetLongitude() != 0))
                 {
                     if (firstValidPosition == true)
                     {
@@ -70,11 +78,15 @@ namespace UM980PositioningGUI
                         mapControl.Tracks.Add(track);
                     }
 
-                    ntripClient.SetCoordinates(lat, lon);
+                    ntripClient.SetCoordinates(ggaPacket.GetLatitude(), ggaPacket.GetLongitude());
 
-                    // Recenter always
-                    var point = new GeoPoint((float)lon, (float)lat);
-                    mapControl.Center = point;
+                    var point = new GeoPoint((float)ggaPacket.GetLongitude(), (float)ggaPacket.GetLatitude());
+
+                    // Recenter if needed
+                    if (centerOnPosition)
+                    {
+                        mapControl.Center = point;
+                    }
 
                     track.Add(point);
                     if (track.Count > 100) track.RemoveAt(0);
@@ -112,16 +124,19 @@ namespace UM980PositioningGUI
             {
                 case UM980.ConnectionState.Connected:
                     connectButton.Enabled = false;
+                    disconnectUM980Button.Enabled = true;
                     portsComboBox.Enabled = false;
                     connectButton.BackColor = Color.Green;
                     break;
                 case UM980.ConnectionState.Error:
                     connectButton.Enabled = true;
+                    disconnectUM980Button.Enabled = false;
                     portsComboBox.Enabled = true;
                     connectButton.BackColor = Color.Red;
                     break;
                 case UM980.ConnectionState.Iddle:
                     connectButton.Enabled = true;
+                    disconnectUM980Button.Enabled = false;
                     portsComboBox.Enabled = true;
                     connectButton.BackColor = SystemColors.Control;
                     break;
@@ -136,9 +151,6 @@ namespace UM980PositioningGUI
 
         private void NtripClient_OnRTCMPacket(object sender, byte[] packet)
         {
-            // Console.WriteLine("Send packet:  " + packet.Length + " First : " + packet[0]);
-
-            // RTCMPacket rtcmppacket = new RTCMPacket(packet);
             streamStatistics.push(packet);
             um980.PushData(packet);
         }
@@ -232,6 +244,11 @@ namespace UM980PositioningGUI
             um980.SetPortName(portsComboBox.Items[portsComboBox.SelectedIndex].ToString());
         }
 
+        private void disconnectUM980Button_Click(object sender, EventArgs e)
+        {
+            um980.Disconnect();
+        }
+
         private void storePositionToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StoreToFileForm form = new StoreToFileForm(positionRecorder);
@@ -248,6 +265,11 @@ namespace UM980PositioningGUI
         {
             streamStatistics.clear();
             ntripClient.Disconnect();
+        }
+
+        private void centerOnPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            centerOnPosition = centerOnPositionToolStripMenuItem.Checked;
         }
     }
 }

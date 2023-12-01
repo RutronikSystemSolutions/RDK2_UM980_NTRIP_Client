@@ -109,6 +109,12 @@ namespace UM980PositioningGUI
             }
         }
 
+        public void Disconnect()
+        {
+            if (worker == null) return;
+            worker.CancelAsync();
+        }
+
         private void CreateBackgroundWorker()
         {
             if (this.worker != null)
@@ -126,11 +132,15 @@ namespace UM980PositioningGUI
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            BackgroundWorker worker = (BackgroundWorker)sender;
             UM980Stream stream = new UM980Stream();
 
             for(; ;)
             {
                 byte[] buffer = null;
+
+                if (worker.CancellationPending) return;
+
                 lock(sync)
                 {
                     if (toSend.Count > 0)
@@ -171,6 +181,8 @@ namespace UM980PositioningGUI
                     // Console.WriteLine(ASCIIEncoding.ASCII.GetString(readBuffer));
                     for(; ;)
                     {
+                        if (worker.CancellationPending) return;
+
                         byte[] packet = stream.readNMEAPacket();
                         if (packet == null) break;
                         else
@@ -205,6 +217,7 @@ namespace UM980PositioningGUI
             catch (Exception) { }
             OnNewConnectionState?.Invoke(this, ConnectionState.Iddle);
             state = ConnectionState.Iddle;
+            worker = null;
         }
     }
 }

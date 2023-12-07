@@ -16,15 +16,18 @@ namespace UM980PositioningGUI
 
         private Marker currentPos = null;
 
-        // Initializing collection of points,
-        // filling points with data omitted
-        private List<GeoPoint> posPoints = new List<GeoPoint>();
         private Track track = new Track(TrackStyle.Default);
 
         private DataRecorder positionRecorder = new DataRecorder();
 
         private bool firstValidPosition = true;
         private bool centerOnPosition = true;
+
+        private Statistics distanceToRefPointStats = new Statistics();
+
+        private GeoCoordinate referencePoint = null;
+        private GeoCoordinate lastLocalisation = null;
+
 
         public MainForm()
         {
@@ -34,18 +37,21 @@ namespace UM980PositioningGUI
         private void Um980_OnNMEAPacket(object sender, byte[] packet)
         {
             NMEAPacket nmeaPacket = new NMEAPacket(packet);
-            Console.WriteLine(nmeaPacket.GetRawString());
+            blinkingPanel.Trigger();
+            rawGGAMSgTextBox.Text = nmeaPacket.GetRawString();
 
             if (nmeaPacket.IsPositioningPacket())
             {
                 GGAPacket ggaPacket = new GGAPacket(Encoding.ASCII.GetString(packet));
 
-                string toDisp = string.Format("Lon: {0}° Lat : {1}° Quality: {2} Sat count: {3} Correction age: {4} sec.", 
+                string toDisp = string.Format("Timestamp: {6}\nLon: {0}°\nLat : {1}°\nQuality: {2}\nSat count: {3}\nCorrection age: {4} sec.\nHDOP: {5}", 
                     ggaPacket.GetLongitude(), 
                     ggaPacket.GetLatitude(), 
                     ggaPacket.quality, 
                     ggaPacket.satellites_in_use, 
-                    ggaPacket.correction_age);
+                    ggaPacket.correction_age,
+                    ggaPacket.hdop,
+                    ggaPacket.GetTimestampAsString());
                 lastPacketLabel.Text = toDisp;
 
                 if (positionRecorder.IsStarted())
@@ -58,9 +64,26 @@ namespace UM980PositioningGUI
                 longitudeTextBox.Text = ggaPacket.GetLongitude().ToString();
                 qualityTextBox.Text = ggaPacket.quality.ToString();
                 satCountTextBox.Text = ggaPacket.satellites_in_use.ToString();
+                hdopTextBox.Text = ggaPacket.hdop.ToString();
+                hdopPanel.SetValue(ggaPacket.hdop);
 
                 if ((ggaPacket.GetLatitude() != 0) && (ggaPacket.GetLongitude() != 0))
                 {
+                    if (lastLocalisation == null) lastLocalisation = new GeoCoordinate();
+                    lastLocalisation.latitude = ggaPacket.GetLatitude();
+                    lastLocalisation.longitude = ggaPacket.GetLongitude();
+
+                    if (referencePoint != null)
+                    {
+                        double distance = GeoCoordinate.GetDistance(
+                            lastLocalisation.longitude, lastLocalisation.latitude,
+                            referencePoint.longitude, referencePoint.latitude);
+
+                        distanceToRefPointStats.pushData(distance);
+
+                        distanceToRefPointTextBox.Text = String.Format("{0:F3}m \t Average: {1:F3} \t Std dev: {2:F3}", distance, distanceToRefPointStats.Average(), distanceToRefPointStats.StandardDeviation());
+                    }
+
                     if (firstValidPosition == true)
                     {
                         firstValidPosition = false;
@@ -270,6 +293,15 @@ namespace UM980PositioningGUI
         private void centerOnPositionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             centerOnPosition = centerOnPositionToolStripMenuItem.Checked;
+        }
+
+        private void setAsReferencePointButton_Click(object sender, EventArgs e)
+        {
+            if (lastLocalisation == null) return;
+            referencePoint = new GeoCoordinate();
+            referencePoint.latitude = lastLocalisation.latitude;
+            referencePoint.longitude = lastLocalisation.longitude;
+            distanceToRefPointStats.clear();
         }
     }
 }

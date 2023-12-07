@@ -75,7 +75,8 @@ namespace UM980PositioningGUI
         private const int ActionRequestSourceTable = 1;
         private const int ActionRequestCorrectionValues = 2;
 
-        private const int SocketConnectTimeoutMs = 2500;
+        private const int SocketConnectTimeoutMs = 5000;
+        private const int SourceReceiveDataTimeoutMs = 5000;
 
         #endregion
 
@@ -302,7 +303,7 @@ namespace UM980PositioningGUI
                 long timeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 
                 long diff = timeStamp - lastValidTimestamp;
-                if ((diff < 0) || (diff > 1000))
+                if ((diff < 0) || (diff > SourceReceiveDataTimeoutMs))
                 {
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
@@ -390,7 +391,7 @@ namespace UM980PositioningGUI
                 long timeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
                 long diff = timeStamp - lastValidTimestamp;
-                if ((diff < 0) || (diff > 5000))
+                if ((diff < 0) || (diff > SourceReceiveDataTimeoutMs))
                 {
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
@@ -454,7 +455,7 @@ namespace UM980PositioningGUI
                 long timeStamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
                 long diff = timeStamp - lastValidTimestamp;
-                if ((diff < 0) || (diff > 5000))
+                if ((diff < 0) || (diff > SourceReceiveDataTimeoutMs))
                 {
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();

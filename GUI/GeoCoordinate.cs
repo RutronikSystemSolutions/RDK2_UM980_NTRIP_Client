@@ -8,6 +8,9 @@ namespace UM980PositioningGUI
 {
     public class GeoCoordinate
     {
+        public double longitude;
+        public double latitude;
+
         public static double GetDistance(double lon1, double lat1, double lon2, double lat2)
         {
             var d1 = lat1 * (Math.PI / 180.0);

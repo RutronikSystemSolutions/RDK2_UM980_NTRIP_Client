@@ -229,6 +229,11 @@ namespace UM980PositioningGUI
             return realAltitude;
         }
 
+        public string GetTimestampAsString()
+        {
+            return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        }
+
         public static string GetCsvHeader()
         {
             StringBuilder sb = new StringBuilder();

@@ -382,6 +382,8 @@ namespace UM980PositioningGUI
                 return -2;
             }
 
+            Console.WriteLine("Here 1");
+
             // Get the answer and wait until OK
             byte[] bytes = new byte[1024];
             string readBuffer = string.Empty;
@@ -395,6 +397,9 @@ namespace UM980PositioningGUI
                 {
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
+
+
+                    Console.WriteLine("Here 2");
 
                     worker.ReportProgress(MsgError, "Timeout when connectiong to correction station");
                     return -2;

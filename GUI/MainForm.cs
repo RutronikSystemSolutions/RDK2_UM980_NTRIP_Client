@@ -192,7 +192,12 @@ namespace UM980PositioningGUI
             mapControl.CacheFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MapControl");
 
             // Use tiles from OpenTopoMap (https://opentopomap.org/)
-            mapControl.TileServer = new OpenTopoMapServer();
+            //mapControl.TileServer = new OpenTopoMapServer();
+
+            //mapControl.TileServer = new BingMapsAerialTileServer();
+            //mapControl.TileServer = new BingMapsHybridTileServer();
+            //mapControl.TileServer = new BingMapsRoadsTileServer();
+            mapControl.TileServer = new OpenStreetMapTileServer("RutronikUM980PositioningGUIv1.0");
 
             string[] serialPorts = SerialPort.GetPortNames();
             portsComboBox.DataSource = serialPorts;
@@ -302,6 +307,31 @@ namespace UM980PositioningGUI
             referencePoint.latitude = lastLocalisation.latitude;
             referencePoint.longitude = lastLocalisation.longitude;
             distanceToRefPointStats.clear();
+        }
+
+        private void loadFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            // Parse file and track to the map
+            MeasurementFile file = new MeasurementFile(ofd.FileName);
+            if (file.coordinates.Count == 0) return;
+
+            Pen pen = new Pen(Color.Red);
+            pen.Width = 20;
+
+            Track fileTrack = new Track(new TrackStyle(pen));
+            for (int i = 0; i < file.coordinates.Count; ++i)
+            {
+                fileTrack.Add(new GeoPoint((float)file.coordinates[i].longitude, (float)file.coordinates[i].latitude));
+            }
+            mapControl.Tracks.Add(fileTrack);
+            mapControl.Invalidate();
         }
     }
 }

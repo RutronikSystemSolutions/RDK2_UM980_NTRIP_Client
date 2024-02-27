@@ -69,6 +69,7 @@
     <Compile Include="HDOPPanel.Designer.cs">
       <DependentUpon>HDOPPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="MeasurementFile.cs" />
     <Compile Include="NTRIPCasterConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>

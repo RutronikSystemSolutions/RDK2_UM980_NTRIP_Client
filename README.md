@@ -40,6 +40,8 @@ Available server address:
 - For France: caster.centipede.fr / Port: 2101
 - For Europe: euref-ip.net / Port: 2101
 
+    The euref-ip.net server is free, but you need to register first at this address: https://register.rtcm-ntrip.org/cgi-bin/registration.cgi
+
 To be sure that the sensor can handle the correction data, check the value of "correction age" and the value of "quality". If "correction age" stays to the value 0, the sensor does not understand the correction data. Be sure that the RTCM version is OK.
 
 <figure>

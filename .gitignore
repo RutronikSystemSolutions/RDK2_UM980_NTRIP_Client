@@ -18,3 +18,4 @@ BSP/*_build/
 BSP/libs/
 
 mtb_shared/
+/GUI/.vs

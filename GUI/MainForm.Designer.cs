@@ -60,12 +60,12 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storePositionToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerOnPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setAsReferencePointButton = new System.Windows.Forms.Button();
             this.distanceToRefPointTextBox = new System.Windows.Forms.TextBox();
             this.distanceToRefPointLabel = new System.Windows.Forms.Label();
-            this.loadFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.um980SerialPortConfigurationGroupBox.SuspendLayout();
             this.ntripCasterConfigurationGroupBox.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -183,7 +183,7 @@
             this.hdopLabel.AutoSize = true;
             this.hdopLabel.Location = new System.Drawing.Point(545, 160);
             this.hdopLabel.Name = "hdopLabel";
-            this.hdopLabel.Size = new System.Drawing.Size(52, 17);
+            this.hdopLabel.Size = new System.Drawing.Size(49, 16);
             this.hdopLabel.TabIndex = 19;
             this.hdopLabel.Text = "HDOP:";
             // 
@@ -237,7 +237,7 @@
             this.satCountLabel.AutoSize = true;
             this.satCountLabel.Location = new System.Drawing.Point(537, 134);
             this.satCountLabel.Name = "satCountLabel";
-            this.satCountLabel.Size = new System.Drawing.Size(76, 17);
+            this.satCountLabel.Size = new System.Drawing.Size(68, 16);
             this.satCountLabel.TabIndex = 14;
             this.satCountLabel.Text = "Sat. count:";
             // 
@@ -257,7 +257,7 @@
             this.signalQualityLabel.AutoSize = true;
             this.signalQualityLabel.Location = new System.Drawing.Point(555, 105);
             this.signalQualityLabel.Name = "signalQualityLabel";
-            this.signalQualityLabel.Size = new System.Drawing.Size(56, 17);
+            this.signalQualityLabel.Size = new System.Drawing.Size(51, 16);
             this.signalQualityLabel.TabIndex = 12;
             this.signalQualityLabel.Text = "Quality:";
             // 
@@ -267,7 +267,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(723, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 17);
+            this.label2.Size = new System.Drawing.Size(11, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "°";
             // 
@@ -287,7 +287,7 @@
             this.latitudeLabel.AutoSize = true;
             this.latitudeLabel.Location = new System.Drawing.Point(549, 78);
             this.latitudeLabel.Name = "latitudeLabel";
-            this.latitudeLabel.Size = new System.Drawing.Size(63, 17);
+            this.latitudeLabel.Size = new System.Drawing.Size(57, 16);
             this.latitudeLabel.TabIndex = 9;
             this.latitudeLabel.Text = "Latitude:";
             // 
@@ -297,7 +297,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(723, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 17);
+            this.label1.Size = new System.Drawing.Size(11, 16);
             this.label1.TabIndex = 8;
             this.label1.Text = "°";
             // 
@@ -317,7 +317,7 @@
             this.longitudeLabel.AutoSize = true;
             this.longitudeLabel.Location = new System.Drawing.Point(537, 49);
             this.longitudeLabel.Name = "longitudeLabel";
-            this.longitudeLabel.Size = new System.Drawing.Size(75, 17);
+            this.longitudeLabel.Size = new System.Drawing.Size(69, 16);
             this.longitudeLabel.TabIndex = 6;
             this.longitudeLabel.Text = "Longitude:";
             // 
@@ -346,7 +346,7 @@
             this.lastRTCMTypeLabel.Location = new System.Drawing.Point(212, 193);
             this.lastRTCMTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastRTCMTypeLabel.Name = "lastRTCMTypeLabel";
-            this.lastRTCMTypeLabel.Size = new System.Drawing.Size(28, 17);
+            this.lastRTCMTypeLabel.Size = new System.Drawing.Size(23, 16);
             this.lastRTCMTypeLabel.TabIndex = 15;
             this.lastRTCMTypeLabel.Text = "----";
             // 
@@ -392,7 +392,7 @@
             this.receptionSpeedLabel.AutoSize = true;
             this.receptionSpeedLabel.Location = new System.Drawing.Point(415, 193);
             this.receptionSpeedLabel.Name = "receptionSpeedLabel";
-            this.receptionSpeedLabel.Size = new System.Drawing.Size(82, 17);
+            this.receptionSpeedLabel.Size = new System.Drawing.Size(74, 16);
             this.receptionSpeedLabel.TabIndex = 5;
             this.receptionSpeedLabel.Text = "----- bytes/s";
             // 
@@ -402,7 +402,7 @@
             this.bytesReceivedLabel.AutoSize = true;
             this.bytesReceivedLabel.Location = new System.Drawing.Point(5, 193);
             this.bytesReceivedLabel.Name = "bytesReceivedLabel";
-            this.bytesReceivedLabel.Size = new System.Drawing.Size(123, 17);
+            this.bytesReceivedLabel.Size = new System.Drawing.Size(114, 16);
             this.bytesReceivedLabel.TabIndex = 4;
             this.bytesReceivedLabel.Text = "--- bytes received.";
             // 
@@ -431,9 +431,16 @@
             // storePositionToFileToolStripMenuItem
             // 
             this.storePositionToFileToolStripMenuItem.Name = "storePositionToFileToolStripMenuItem";
-            this.storePositionToFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.storePositionToFileToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.storePositionToFileToolStripMenuItem.Text = "Store to file";
             this.storePositionToFileToolStripMenuItem.Click += new System.EventHandler(this.storePositionToFileToolStripMenuItem_Click);
+            // 
+            // loadFromFileToolStripMenuItem
+            // 
+            this.loadFromFileToolStripMenuItem.Name = "loadFromFileToolStripMenuItem";
+            this.loadFromFileToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.loadFromFileToolStripMenuItem.Text = "Load from file";
+            this.loadFromFileToolStripMenuItem.Click += new System.EventHandler(this.loadFromFileToolStripMenuItem_Click);
             // 
             // mapToolStripMenuItem
             // 
@@ -483,16 +490,9 @@
             this.distanceToRefPointLabel.Location = new System.Drawing.Point(279, 763);
             this.distanceToRefPointLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.distanceToRefPointLabel.Name = "distanceToRefPointLabel";
-            this.distanceToRefPointLabel.Size = new System.Drawing.Size(183, 17);
+            this.distanceToRefPointLabel.Size = new System.Drawing.Size(169, 16);
             this.distanceToRefPointLabel.TabIndex = 14;
             this.distanceToRefPointLabel.Text = "Distance to reference point:";
-            // 
-            // loadFromFileToolStripMenuItem
-            // 
-            this.loadFromFileToolStripMenuItem.Name = "loadFromFileToolStripMenuItem";
-            this.loadFromFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.loadFromFileToolStripMenuItem.Text = "Load from file";
-            this.loadFromFileToolStripMenuItem.Click += new System.EventHandler(this.loadFromFileToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -511,7 +511,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UM980 - Positioning - v1.0";
+            this.Text = "UM980 - Positioning - v1.1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.um980SerialPortConfigurationGroupBox.ResumeLayout(false);
             this.um980SerialPortConfigurationGroupBox.PerformLayout();

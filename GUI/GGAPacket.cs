@@ -32,7 +32,7 @@ namespace UM980PositioningGUI
         /// Constructor using raw string
         /// </summary>
         /// <param name="rawPacket">Example: $GNGGA,074511.00,4845.77729544,N,00758.32489181,E,1,19,0.6,125.7309,M,48.3746,M,,*79</param>
-        public GGAPacket(String rawPacket)
+        public GGAPacket(string rawPacket)
         {
             const int segmentCount = 15;
             
@@ -140,54 +140,74 @@ namespace UM980PositioningGUI
             }
 
             string qualityStr = segments[6];
-            try
+            if (qualityStr.Length != 0)
             {
-                quality = (byte) Convert.ToInt32(qualityStr);
+                try
+                {
+                    quality = (byte)Convert.ToInt32(qualityStr);
+                }
+                catch (Exception)
+                {
+                    quality = 0;
+                }
             }
-            catch(Exception)
-            {
-                quality = 0;
-            }
+            else quality = 0;
 
             string satCountStr = segments[7];
-            try
+            if (satCountStr.Length != 0)
             {
-                satellites_in_use = (byte) Convert.ToInt32(satCountStr);
+                try
+                {
+                    satellites_in_use = (byte)Convert.ToInt32(satCountStr);
+                }
+                catch (Exception)
+                {
+                    satellites_in_use = 0;
+                }
             }
-            catch(Exception)
-            {
-                satellites_in_use = 0;
-            }
+            else satellites_in_use = 0;
 
             string hdopStr = segments[8];
-            try
+            if (hdopStr.Length != 0)
             {
-                hdop = double.Parse(hdopStr, CultureInfo.InvariantCulture);
+                try
+                {
+                    hdop = double.Parse(hdopStr, CultureInfo.InvariantCulture);
+                }
+                catch (Exception)
+                {
+                    hdop = 0;
+                }
             }
-            catch (Exception)
-            {
-                hdop = 0;
-            }
+            else hdop = 0;
 
             string altitudeStr = segments[9];
-            try
+            if (altitudeStr.Length != 0)
             {
-                altitude = double.Parse(altitudeStr, CultureInfo.InvariantCulture);
+                try
+                {
+                    altitude = double.Parse(altitudeStr, CultureInfo.InvariantCulture);
+                }
+                catch (Exception)
+                {
+                    altitude = 0;
+                }
             }
-            catch (Exception)
-            {
-                altitude = 0;
-            }
+            else altitude = 0;
 
             string undulationStr = segments[11];
-            try
+            if (undulationStr.Length != 0)
             {
-                undulation = double.Parse(undulationStr, CultureInfo.InvariantCulture);
+                try
+                {
+                    undulation = double.Parse(undulationStr, CultureInfo.InvariantCulture);
+                }
+                catch (Exception)
+                {
+                    undulation = 0;
+                }
             }
-            catch (Exception)
-            {
-                undulation = 0;
-            }
+            else undulation = 0;
 
             // $GNGGA,104006.00,4845.77986177,N,00758.32408413,E,2,22,0.6,129.6143,M,48.3745,M,7.0,0000*54
 

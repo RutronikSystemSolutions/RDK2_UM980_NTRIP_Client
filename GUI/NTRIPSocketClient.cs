@@ -382,8 +382,6 @@ namespace UM980PositioningGUI
                 return -2;
             }
 
-            Console.WriteLine("Here 1");
-
             // Get the answer and wait until OK
             byte[] bytes = new byte[1024];
             string readBuffer = string.Empty;
@@ -398,10 +396,7 @@ namespace UM980PositioningGUI
                     socket.Shutdown(SocketShutdown.Both);
                     socket.Close();
 
-
-                    Console.WriteLine("Here 2");
-
-                    worker.ReportProgress(MsgError, "Timeout when connectiong to correction station");
+                    worker.ReportProgress(MsgError, "Timeout when connecting to correction station");
                     return -2;
                 }
 
@@ -431,21 +426,28 @@ namespace UM980PositioningGUI
                     longitude = this.longitude;
                 }
 
-                // $GPGGA,084125,5400.0000,N,02300.0000,E,1,05,1.00,100.0,M,10.000,M,,*7c
-                string positionStr = NMEAPacket.GenerateNMEAGGAPacket(latitude, longitude);
-                Console.WriteLine("Send : " + positionStr);
-                msg = Encoding.ASCII.GetBytes(positionStr + "\r\n");
-                try
+                if (double.IsNaN(latitude) || double.IsNaN(longitude))
                 {
-                    socket.Send(msg);
+                    worker.ReportProgress(MsgError, "Latitude or longitude is empty, cannot send position packet");
                 }
-                catch (Exception ex)
+                else
                 {
-                    socket.Shutdown(SocketShutdown.Both);
-                    socket.Close();
+                    // $GPGGA,084125,5400.0000,N,02300.0000,E,1,05,1.00,100.0,M,10.000,M,,*7c
+                    string positionStr = NMEAPacket.GenerateNMEAGGAPacket(latitude, longitude);
+                    Console.WriteLine("Send : " + positionStr);
+                    msg = Encoding.ASCII.GetBytes(positionStr + "\r\n");
+                    try
+                    {
+                        socket.Send(msg);
+                    }
+                    catch (Exception ex)
+                    {
+                        socket.Shutdown(SocketShutdown.Both);
+                        socket.Close();
 
-                    worker.ReportProgress(MsgError, "Error while sending position packet: " + ex.Message);
-                    return -3;
+                        worker.ReportProgress(MsgError, "Error while sending position packet: " + ex.Message);
+                        return -3;
+                    }
                 }
             }
 
@@ -534,6 +536,7 @@ namespace UM980PositioningGUI
 
             if (actionRequested == ActionRequestCorrectionValues)
             {
+                int positionTimeout = 20;
                 worker.ReportProgress(MsgNewConnectionState, ConnectionState.WaitingValidPosition);
                 for (; ; )
                 {
@@ -550,7 +553,15 @@ namespace UM980PositioningGUI
                     if (double.IsNaN(latitude) || double.IsNaN(longitude))
                     {
                         System.Threading.Thread.Sleep(100);
-                        continue;
+                        if (positionTimeout == 0)
+                        {
+                            // No valid position - test mode?
+                        }
+                        else
+                        {
+                            positionTimeout--;
+                            continue;
+                        }
                     }
 
                     CorrectionStation toConnectStation = null;

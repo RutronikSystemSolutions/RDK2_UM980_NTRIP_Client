@@ -511,7 +511,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UM980 - Positioning - v1.1";
+            this.Text = "UM980 - Positioning - v1.2";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.um980SerialPortConfigurationGroupBox.ResumeLayout(false);
             this.um980SerialPortConfigurationGroupBox.PerformLayout();
